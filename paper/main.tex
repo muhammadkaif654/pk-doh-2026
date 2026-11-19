@@ -205,7 +205,7 @@ M1 Fused RF (proposed) & $0.444\pm0.026$ & 0.479 & 0.770 & $0.923\pm0.022$ & 0.9
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.62\textwidth]{figures/fig6_transfer_matrix.png}
+\includegraphics[width=0.56\textwidth]{figures/fig6_transfer_matrix.png}
 \caption{Transfer matrix for B1 (rows train, columns test) with site-clustered 95\% confidence intervals. PK26: PK-DoH-2026; S18/S19: Siby's data.}\label{fig:transfer}
 \end{figure}
 
@@ -221,10 +221,10 @@ M1 Fused RF (proposed) & $0.444\pm0.026$ & 0.479 & 0.770 & $0.923\pm0.022$ & 0.9
 \toprule
 Paper & Problem & Method & Dataset & Metrics & Reported result & Key limitation \\
 \midrule
-Siby et al. 2020~\cite{siby2020} & WF on DoH & Size and burst n-grams, RF & 1,500 pages, 3 locations, 2018--19 & P, R, \Fone{} & \Fone{} 0.898; 0.430 at 468-B padding & Artefact differs from paper; never re-measured \\
-Moure-Garrido et al. 2026~\cite{mouregarrido2026} & WF on DoQ & Burst statistics, RF & 986 sites, 9 nodes, one country & Acc., \Fone{} & Acc. 0.873; cross-node 53--81\% & One country; padding argued, not measured \\
-DoHFuse 2026~\cite{zhang2026dohfuse} & WF on DoH/3 & Timing-only DMAG-LSTM & 449 sites $\times$ 100, US VPS & Acc., \Fone{} & 95.48\% (100 sites); size-only 67.39\% & One region; padding not audited \\
-Shusterman et al. 2026~\cite{shusterman2026} & Drift & CNN+LSTM, retraining regimes & 100 sites, 26 weeks & Acc. & $>$95\% same week; $\approx$60\% after 26 weeks & One lab and browser; no variance \\
+Siby 2020~\cite{siby2020} & WF on DoH & Size, burst n-grams; RF & 1,500 pages, 3 places & P, R, \Fone{} & \Fone{} 0.898; 0.430 padded & Artefact differs from paper \\
+Moure-Garrido 2026~\cite{mouregarrido2026} & WF on DoQ & Burst statistics; RF & 986 sites, 9 nodes & Acc., \Fone{} & Acc. 0.873; transfer 53--81\% & One country; padding not measured \\
+DoHFuse 2026~\cite{zhang2026dohfuse} & WF on DoH/3 & Timing DMAG-LSTM & 449 sites $\times$ 100 & Acc., \Fone{} & 95.48\%; size-only 67.39\% & One region; padding not audited \\
+Shusterman 2026~\cite{shusterman2026} & Drift & CNN+LSTM, retraining & 100 sites, 26 weeks & Acc. & $>$95\% $\to\approx$60\% in 26 weeks & One lab; no variance \\
 \botrule
 \end{tabular*}
 \end{table}
@@ -298,15 +298,15 @@ F1 + tri-grams & 0.341 & 0.934 & & & \\
 %% ===================================================================== 8
 \section{Discussion}\label{sec:discussion}
 
-\paragraph{Why it works and what it means.} Each page triggers its own set of lookups, whose number, order and sizes vary little between visits. Padding removes the sizes but not the number or grouping of the lookups, so burst features and M1 survive it: on DNS traces, what survives size-only defences~\cite{gong2026wfcat,bushart2020} is coarse burst structure rather than fine timing. For users, protection depends on an invisible combination of client and resolver (a Chrome user is padded on Cloudflare or Google but not on Quad9, NextDNS, DNS.SB or AliDNS), which resolvers could remove by padding unconditionally, as OpenDNS does. For researchers, models are as short-lived as client software and must be retrained, not reused.
+\paragraph{Why it works and what it means.} Each page triggers its own set of lookups, whose number, order and sizes vary little between visits. Padding removes the sizes but not the number or grouping of the lookups, so burst features and M1 survive it: on DNS traces, what survives size-only defences~\cite{gong2026wfcat,bushart2020} is coarse burst structure rather than fine timing. For users, protection depends on an invisible client--resolver combination, which resolvers could remove by padding unconditionally, as OpenDNS does; for researchers, models are as short-lived as client software and must be retrained, not reused.
 
 \paragraph{Strengths.} The two 2026 conditions share sites, network, browser, week and collection script and differ only in the resolver and hence its padding. Padding is measured from decrypted replies rather than assumed, the reproduction is judged on the authors' own data against a tolerance fixed in advance, and every in-domain result carries its spread over repeated splits.
 
 \paragraph{Failure cases.} Under deployed padding, 42 of 98 sites are never identified (Figure~\ref{fig:cdf}). M1 trails k-FP on padded traffic (0.444 against 0.463) and B1 on unpadded traffic (by 0.025); M2 is weak at this sample size, and its attention block lowers accuracy. EDNS0-468 is only partly reproduced, and perfect padding matches the paper only under a corrected reading of the setup.
 
-\paragraph{Research gaps.} Of the four gaps from the literature review, three are closed (Table~\ref{tab:gaps}, Appendix~\ref{app:extra}): the 2020 attack is re-measured, deployed padding is tied to attack accuracy, and results carry stated uncertainty under a pre-registered criterion. The location gap is only partly closed: the change of client, TLS and padding between eras hides any location effect, so regional CDN steering was neither confirmed nor ruled out.
+\paragraph{Research gaps.} Of the four gaps from the literature review, three are closed (Table~\ref{tab:gaps}, Appendix~\ref{app:extra}): re-measuring the 2020 attack, tying deployed padding to attack accuracy, and reporting uncertainty under a pre-registered criterion. The location gap is only partly closed, as the change of client, TLS and padding between eras hides any location effect.
 
-\paragraph{Limitations and threats to validity.} With 10 traces per site and 100 sites, absolute values are lower bounds (A3) and the neural models are under-trained. All 2026 data come from one Wi-Fi network and Chrome~157; crawls are more regular than real browsing~\cite{jansen2026gtt23,deng2026}, and an open world would lower all numbers. Only 3 of 10 reproduction folds were evaluated, and parallel workers may add timing noise (each capture is filtered to one resolver address, so traces cannot mix). McNemar tests, multiple-comparison correction and a confusion-cluster analysis were planned but not done.
+\paragraph{Limitations and threats to validity.} With 10 traces per site and 100 sites, absolute values are lower bounds (A3) and the neural models are under-trained. All 2026 data come from one Wi-Fi network and Chrome~157; crawls are more regular than real browsing~\cite{jansen2026gtt23,deng2026}, and an open world would lower all numbers. Only 3 of 10 reproduction folds were evaluated, and parallel workers may add timing noise. McNemar tests, multiple-comparison correction and a confusion-cluster analysis were planned but not done.
 
 %% ===================================================================== 9
 \section{Conclusion and Future Work}\label{sec:conclusion}
@@ -315,8 +315,7 @@ The 2020 attack on encrypted DNS reproduces within a pre-registered tolerance an
 
 \backmatter
 
-\bmhead{Acknowledgements}
-The authors thank Siby et al. for releasing their code and data~\cite{sibycode}.
+\bmhead{Acknowledgements} The authors thank Siby et al. for releasing their code and data~\cite{sibycode}.
 
 \section*{Declarations}
 \begin{itemize}
