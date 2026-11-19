@@ -1,0 +1,182 @@
+15:49:16 netA_wifi_cloudflare 282 traces 94 sites 3 per site
+15:49:20   ngram_rf   F1=0.131±0.030 acc=0.170 top5=0.441
+15:49:25   kfp        F1=0.236±0.019 acc=0.293 top5=0.559
+15:49:27   cumul      F1=0.028±0.013 acc=0.043 top5=0.314
+15:50:28   df         F1=0.001±0.001 acc=0.016 top5=0.064
+15:50:30   burst_rf   F1=0.248±0.022 acc=0.303 top5=0.622
+15:50:31   timing_rf  F1=0.081±0.012 acc=0.117 top5=0.282
+15:50:40   fused_rf   F1=0.169±0.009 acc=0.223 top5=0.473
+15:51:08   cnn_se     F1=0.001±0.001 acc=0.016 top5=0.053
+15:51:08 saved e2_indomain.json
+15:51:08 netA_wifi_cloudflare_curated 252 traces 84 sites 3 per site
+15:51:13   ngram_rf   F1=0.118±0.062 acc=0.167 top5=0.429
+15:51:18   fused_rf   F1=0.138±0.009 acc=0.196 top5=0.512
+15:51:18 saved e2_indomain.json
+15:51:18 netA_wifi_quad9 285 traces 95 sites 3 per site
+15:51:22   ngram_rf   F1=0.681±0.035 acc=0.732 top5=0.926
+15:51:25   kfp        F1=0.330±0.021 acc=0.411 top5=0.674
+15:51:26   cumul      F1=0.074±0.010 acc=0.100 top5=0.179
+15:52:11   df         F1=0.000±0.000 acc=0.011 top5=0.068
+15:52:16   burst_rf   F1=0.374±0.080 acc=0.442 top5=0.668
+15:52:17   timing_rf  F1=0.094±0.012 acc=0.126 top5=0.311
+15:52:20   fused_rf   F1=0.678±0.004 acc=0.721 top5=0.911
+15:52:39   cnn_se     F1=0.000±0.000 acc=0.011 top5=0.053
+15:52:39 saved e2_indomain.json
+15:52:39 netA_wifi_quad9_curated 255 traces 85 sites 3 per site
+15:52:43   ngram_rf   F1=0.704±0.062 acc=0.747 top5=0.929
+15:52:47   fused_rf   F1=0.697±0.026 acc=0.741 top5=0.947
+15:52:47 saved e2_indomain.json
+15:52:47 saved e2_indomain.json
+15:52:52 E5 deployed netA_wifi_cloudflare ngram_rf F1=0.118
+15:52:57 E5 deployed netA_wifi_cloudflare block_rf_128 F1=0.127
+15:53:00 E5 deployed netA_wifi_cloudflare block_rf_468 F1=0.112
+15:53:08 E5 deployed netA_wifi_cloudflare timing_rf F1=0.073
+15:53:16 E5 deployed netA_wifi_cloudflare burst_rf F1=0.242
+15:53:22 E5 deployed netA_wifi_cloudflare fused_rf F1=0.161
+15:53:27 E5 deployed netA_wifi_quad9 ngram_rf F1=0.691
+15:53:53 E5 deployed netA_wifi_quad9 block_rf_128 F1=0.341
+15:53:59 E5 deployed netA_wifi_quad9 block_rf_468 F1=0.189
+15:54:03 E5 deployed netA_wifi_quad9 timing_rf F1=0.089
+15:54:08 E5 deployed netA_wifi_quad9 burst_rf F1=0.376
+15:54:13 E5 deployed netA_wifi_quad9 fused_rf F1=0.660
+15:54:17 E5 simulated none ngram_rf F1=0.691 overhead=0.00%
+15:54:29 E5 simulated none fused_rf F1=0.660 overhead=0.00%
+15:54:37 E5 simulated none timing_rf F1=0.089 overhead=0.00%
+15:54:40 E5 simulated 128 ngram_rf F1=0.350 overhead=61.56%
+15:54:45 E5 simulated 128 fused_rf F1=0.327 overhead=61.56%
+15:54:58 E5 simulated 468 ngram_rf F1=0.172 overhead=264.10%
+15:55:09 E5 simulated 468 fused_rf F1=0.228 overhead=264.10%
+15:55:13 E5 simulated perfect ngram_rf F1=0.191 overhead=541.57%
+15:55:26 E5 simulated perfect fused_rf F1=0.198 overhead=541.57%
+15:55:26 saved e5_padding.json
+15:55:36 ngram_rf PK26-Cloudflare        -> PK26-Cloudflare        F1=0.118 (94 sites)
+15:55:37 ngram_rf PK26-Cloudflare        -> PK26-Quad9             F1=0.000 (94 sites)
+15:55:38 ngram_rf PK26-Cloudflare        -> S18-LOC1-Lausanne      F1=0.001 (45 sites)
+15:55:39 ngram_rf PK26-Cloudflare        -> S18-LOC3-Singapore     F1=0.001 (45 sites)
+15:55:39 ngram_rf PK26-Cloudflare        -> S19-EDNS128-Lausanne   F1=0.001 (45 sites)
+15:55:41 ngram_rf PK26-Quad9             -> PK26-Cloudflare        F1=0.008 (94 sites)
+15:55:46 ngram_rf PK26-Quad9             -> PK26-Quad9             F1=0.648 (94 sites)
+15:55:47 ngram_rf PK26-Quad9             -> S18-LOC1-Lausanne      F1=0.001 (45 sites)
+15:55:48 ngram_rf PK26-Quad9             -> S18-LOC3-Singapore     F1=0.001 (45 sites)
+15:55:50 ngram_rf PK26-Quad9             -> S19-EDNS128-Lausanne   F1=0.001 (45 sites)
+15:55:51 ngram_rf S18-LOC1-Lausanne      -> PK26-Cloudflare        F1=0.001 (45 sites)
+15:55:52 ngram_rf S18-LOC1-Lausanne      -> PK26-Quad9             F1=0.001 (45 sites)
+15:56:03 ngram_rf S18-LOC1-Lausanne      -> S18-LOC1-Lausanne      F1=0.806 (45 sites)
+15:56:05 ngram_rf S18-LOC1-Lausanne      -> S18-LOC3-Singapore     F1=0.788 (45 sites)
+15:56:06 ngram_rf S18-LOC1-Lausanne      -> S19-EDNS128-Lausanne   F1=0.001 (45 sites)
+15:56:07 ngram_rf S18-LOC3-Singapore     -> PK26-Cloudflare        F1=0.001 (45 sites)
+15:56:08 ngram_rf S18-LOC3-Singapore     -> PK26-Quad9             F1=0.000 (45 sites)
+15:56:10 ngram_rf S18-LOC3-Singapore     -> S18-LOC1-Lausanne      F1=0.627 (45 sites)
+15:56:15 ngram_rf S18-LOC3-Singapore     -> S18-LOC3-Singapore     F1=0.976 (45 sites)
+15:56:17 ngram_rf S18-LOC3-Singapore     -> S19-EDNS128-Lausanne   F1=0.001 (45 sites)
+15:56:18 ngram_rf S19-EDNS128-Lausanne   -> PK26-Cloudflare        F1=0.001 (45 sites)
+15:56:19 ngram_rf S19-EDNS128-Lausanne   -> PK26-Quad9             F1=0.001 (45 sites)
+15:56:20 ngram_rf S19-EDNS128-Lausanne   -> S18-LOC1-Lausanne      F1=0.004 (45 sites)
+15:56:21 ngram_rf S19-EDNS128-Lausanne   -> S18-LOC3-Singapore     F1=0.005 (45 sites)
+15:56:24 ngram_rf S19-EDNS128-Lausanne   -> S19-EDNS128-Lausanne   F1=0.561 (45 sites)
+15:56:24 saved e3_transfer.json
+15:56:28 block_rf_468 PK26-Cloudflare        -> PK26-Cloudflare        F1=0.112 (94 sites)
+15:56:29 block_rf_468 PK26-Cloudflare        -> PK26-Quad9             F1=0.007 (94 sites)
+15:56:31 block_rf_468 PK26-Cloudflare        -> S18-LOC1-Lausanne      F1=0.013 (45 sites)
+15:56:32 block_rf_468 PK26-Cloudflare        -> S18-LOC3-Singapore     F1=0.009 (45 sites)
+15:56:33 block_rf_468 PK26-Cloudflare        -> S19-EDNS128-Lausanne   F1=0.005 (45 sites)
+15:56:34 block_rf_468 PK26-Quad9             -> PK26-Cloudflare        F1=0.009 (94 sites)
+15:56:40 block_rf_468 PK26-Quad9             -> PK26-Quad9             F1=0.177 (94 sites)
+15:56:42 block_rf_468 PK26-Quad9             -> S18-LOC1-Lausanne      F1=0.005 (45 sites)
+15:56:43 block_rf_468 PK26-Quad9             -> S18-LOC3-Singapore     F1=0.000 (45 sites)
+15:56:46 block_rf_468 PK26-Quad9             -> S19-EDNS128-Lausanne   F1=0.004 (45 sites)
+15:56:47 block_rf_468 S18-LOC1-Lausanne      -> PK26-Cloudflare        F1=0.029 (45 sites)
+15:56:48 block_rf_468 S18-LOC1-Lausanne      -> PK26-Quad9             F1=0.018 (45 sites)
+15:56:54 block_rf_468 S18-LOC1-Lausanne      -> S18-LOC1-Lausanne      F1=0.255 (45 sites)
+15:56:54 block_rf_468 S18-LOC1-Lausanne      -> S18-LOC3-Singapore     F1=0.042 (45 sites)
+15:56:55 block_rf_468 S18-LOC1-Lausanne      -> S19-EDNS128-Lausanne   F1=0.033 (45 sites)
+15:56:56 block_rf_468 S18-LOC3-Singapore     -> PK26-Cloudflare        F1=0.001 (45 sites)
+15:56:56 block_rf_468 S18-LOC3-Singapore     -> PK26-Quad9             F1=0.030 (45 sites)
+15:56:57 block_rf_468 S18-LOC3-Singapore     -> S18-LOC1-Lausanne      F1=0.061 (45 sites)
+15:56:59 block_rf_468 S18-LOC3-Singapore     -> S18-LOC3-Singapore     F1=0.323 (45 sites)
+15:57:00 block_rf_468 S18-LOC3-Singapore     -> S19-EDNS128-Lausanne   F1=0.204 (45 sites)
+15:57:02 block_rf_468 S19-EDNS128-Lausanne   -> PK26-Cloudflare        F1=0.000 (45 sites)
+15:57:04 block_rf_468 S19-EDNS128-Lausanne   -> PK26-Quad9             F1=0.019 (45 sites)
+15:57:05 block_rf_468 S19-EDNS128-Lausanne   -> S18-LOC1-Lausanne      F1=0.038 (45 sites)
+15:57:06 block_rf_468 S19-EDNS128-Lausanne   -> S18-LOC3-Singapore     F1=0.158 (45 sites)
+15:57:10 block_rf_468 S19-EDNS128-Lausanne   -> S19-EDNS128-Lausanne   F1=0.451 (45 sites)
+15:57:10 saved e3_transfer.json
+16:00:37 burst_rf PK26-Cloudflare        -> PK26-Cloudflare        F1=0.242 (94 sites)
+16:00:39 burst_rf PK26-Cloudflare        -> PK26-Quad9             F1=0.039 (94 sites)
+16:00:42 burst_rf PK26-Cloudflare        -> S18-LOC1-Lausanne      F1=0.006 (45 sites)
+16:00:44 burst_rf PK26-Cloudflare        -> S18-LOC3-Singapore     F1=0.006 (45 sites)
+16:00:46 burst_rf PK26-Cloudflare        -> S19-EDNS128-Lausanne   F1=0.003 (45 sites)
+16:00:48 burst_rf PK26-Quad9             -> PK26-Cloudflare        F1=0.014 (94 sites)
+16:00:55 burst_rf PK26-Quad9             -> PK26-Quad9             F1=0.371 (94 sites)
+16:00:56 burst_rf PK26-Quad9             -> S18-LOC1-Lausanne      F1=0.004 (45 sites)
+16:00:57 burst_rf PK26-Quad9             -> S18-LOC3-Singapore     F1=0.010 (45 sites)
+16:00:59 burst_rf PK26-Quad9             -> S19-EDNS128-Lausanne   F1=0.006 (45 sites)
+16:01:00 burst_rf S18-LOC1-Lausanne      -> PK26-Cloudflare        F1=0.004 (45 sites)
+16:01:01 burst_rf S18-LOC1-Lausanne      -> PK26-Quad9             F1=0.007 (45 sites)
+16:01:04 burst_rf S18-LOC1-Lausanne      -> S18-LOC1-Lausanne      F1=0.492 (45 sites)
+16:01:05 burst_rf S18-LOC1-Lausanne      -> S18-LOC3-Singapore     F1=0.144 (45 sites)
+16:01:06 burst_rf S18-LOC1-Lausanne      -> S19-EDNS128-Lausanne   F1=0.022 (45 sites)
+16:01:07 burst_rf S18-LOC3-Singapore     -> PK26-Cloudflare        F1=0.004 (45 sites)
+16:01:08 burst_rf S18-LOC3-Singapore     -> PK26-Quad9             F1=0.001 (45 sites)
+16:01:09 burst_rf S18-LOC3-Singapore     -> S18-LOC1-Lausanne      F1=0.127 (45 sites)
+16:01:12 burst_rf S18-LOC3-Singapore     -> S18-LOC3-Singapore     F1=0.759 (45 sites)
+16:01:14 burst_rf S18-LOC3-Singapore     -> S19-EDNS128-Lausanne   F1=0.041 (45 sites)
+16:01:15 burst_rf S19-EDNS128-Lausanne   -> PK26-Cloudflare        F1=0.001 (45 sites)
+16:01:16 burst_rf S19-EDNS128-Lausanne   -> PK26-Quad9             F1=0.010 (45 sites)
+16:01:17 burst_rf S19-EDNS128-Lausanne   -> S18-LOC1-Lausanne      F1=0.007 (45 sites)
+16:01:18 burst_rf S19-EDNS128-Lausanne   -> S18-LOC3-Singapore     F1=0.049 (45 sites)
+16:01:33 burst_rf S19-EDNS128-Lausanne   -> S19-EDNS128-Lausanne   F1=0.620 (45 sites)
+16:01:33 saved e3_transfer.json
+16:01:41 Quad9->Cloudflare ngram_rf k= 0 F1=0.002
+Traceback (most recent call last):
+  File "C:\Users\Muhammad Kaif\Desktop\CNet_Project\Phase3\code\experiments.py", line 368, in <module>
+    globals()[name]()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Muhammad Kaif\Desktop\CNet_Project\Phase3\code\experiments.py", line 177, in e4
+    m, _, _ = ours.evaluate(models.MODELS[model], tr, tgt_test.reset_index(drop=True), seed=rep)
+              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Muhammad Kaif\Desktop\CNet_Project\Phase3\code\ours.py", line 71, in evaluate
+    classes, proba = model_fn(tr, te, seed=seed)
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Muhammad Kaif\Desktop\CNet_Project\Phase3\code\models.py", line 48, in ngram_rf
+    c, p, rf = _rf(Xtr, _labels(tr), Xte, seed=seed)
+               ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Muhammad Kaif\Desktop\CNet_Project\Phase3\code\models.py", line 38, in _rf
+    rf.fit(Xtr, ytr)
+    ~~~~~~^^^^^^^^^^
+  File "C:\Users\Muhammad Kaif\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn\base.py", line 1336, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\Muhammad Kaif\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn\ensemble\_forest.py", line 359, in fit
+    X, y = validate_data(
+           ~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<5 lines>...
+        ensure_all_finite=False,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Muhammad Kaif\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn\utils\validation.py", line 2919, in validate_data
+    X, y = check_X_y(X, y, **check_params)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Muhammad Kaif\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn\utils\validation.py", line 1331, in check_X_y
+    y = _check_y(y, multi_output=multi_output, y_numeric=y_numeric, estimator=estimator)
+  File "C:\Users\Muhammad Kaif\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn\utils\validation.py", line 1341, in _check_y
+    y = check_array(
+        y,
+    ...<5 lines>...
+        estimator=estimator,
+    )
+  File "C:\Users\Muhammad Kaif\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn\utils\validation.py", line 1074, in check_array
+    _assert_all_finite(
+    ~~~~~~~~~~~~~~~~~~^
+        array,
+        ^^^^^^
+    ...<2 lines>...
+        allow_nan=ensure_all_finite == "allow-nan",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Muhammad Kaif\AppData\Local\Programs\Python\Python314\Lib\site-packages\sklearn\utils\validation.py", line 118, in _assert_all_finite
+    raise ValueError("Input contains NaN")
+ValueError: Input contains NaN

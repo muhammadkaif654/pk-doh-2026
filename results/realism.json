@@ -1,0 +1,99 @@
+{
+ "netA_wifi_cloudflare": {
+  "n_traces": 998,
+  "n_sites": 100,
+  "rounds": 10,
+  "median_len": 285.5,
+  "p90_len": 771.3000000000001,
+  "median_dur_s": 9.7750625,
+  "per_site_cv_median": 0.09952773793355735,
+  "share_timeout": 0.09418837675350701,
+  "challenge_sites": [
+   "G17",
+   "G24",
+   "G27",
+   "G35",
+   "P00",
+   "P05",
+   "P09",
+   "P11",
+   "P30",
+   "P34",
+   "P39",
+   "P47"
+  ],
+  "bytes_in_median": 36061.0,
+  "bytes_out_median": 12463.0
+ },
+ "netA_wifi_quad9": {
+  "n_traces": 1000,
+  "n_sites": 100,
+  "rounds": 10,
+  "median_len": 195.5,
+  "p90_len": 518.3000000000001,
+  "median_dur_s": 12.4962235,
+  "per_site_cv_median": 0.09516557769355707,
+  "share_timeout": 0.072,
+  "challenge_sites": [
+   "G17",
+   "G24",
+   "G27",
+   "G35",
+   "P00",
+   "P05",
+   "P09",
+   "P11",
+   "P30",
+   "P34",
+   "P39",
+   "P47"
+  ],
+  "bytes_in_median": 11557.5,
+  "bytes_out_median": 12881.0
+ },
+ "siby_LOC1": {
+  "n_traces": 415562,
+  "median_len": 59.0,
+  "p90_len": 213.0,
+  "per_site_cv_median": 0.24220981744600623,
+  "n_pages": 1500,
+  "pages_ge60": 1500,
+  "per_page_median": 280
+ },
+ "siby_LOC3": {
+  "n_traces": 154933,
+  "median_len": 77.0,
+  "p90_len": 243.0,
+  "per_site_cv_median": 0.033691510851387496,
+  "n_pages": 1500,
+  "pages_ge60": 1500,
+  "per_page_median": 103
+ },
+ "siby_EDNS0-128": {
+  "n_traces": 132922,
+  "median_len": 76.0,
+  "p90_len": 229.0,
+  "per_site_cv_median": 0.04643506178842576,
+  "n_pages": 1500,
+  "pages_ge60": 1500,
+  "per_page_median": 89
+ },
+ "siby_EDNS0-468": {
+  "n_traces": 83794,
+  "median_len": 68.0,
+  "p90_len": 282.0,
+  "per_site_cv_median": 0.15150311800479738,
+  "n_pages": 1500,
+  "pages_ge60": 700,
+  "per_page_median": 19
+ },
+ "siby_LOC2": {
+  "n_traces": 311948,
+  "median_len": 54.0,
+  "p90_len": 184.0,
+  "per_site_cv_median": 0.05004728011370365,
+  "n_pages": 1500,
+  "pages_ge60": 1500,
+  "per_page_median": 203
+ }
+}

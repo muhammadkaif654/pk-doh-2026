@@ -1,0 +1,304 @@
+file,site_id,domain,group,round,resolver,resolver_ip,network,utc_start,status,title,seconds,pcap_bytes
+G12_r01.pcapng,G12,ebay.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:32:43+00:00,ok,Error Page | eBay,11.8,96096
+P17_r01.pcapng,P17,olx.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:32:59+00:00,ok,OLX - Buy and Sell for free anywhere in Pakistan with OLX online classifieds,13.4,157964
+G22_r01.pcapng,G22,paypal.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:33:16+00:00,ok,paypal.com,18.6,109640
+P31_r01.pcapng,P31,nbp.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:33:38+00:00,ok,National Bank of Pakistan,19.1,90892
+G48_r01.pcapng,G48,duckduckgo.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:34:01+00:00,ok,DuckDuckGo - Protection. Privacy. Peace of mind.,11.0,89692
+P15_r01.pcapng,P15,dailypakistan.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:34:16+00:00,ok,Daily Pakistan - Latest Urdu News & Daily Newspaper,15.9,145720
+G35_r01.pcapng,G35,quora.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:34:36+00:00,ok,Just a moment...,13.9,104628
+P44_r01.pcapng,P44,punjab.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:34:53+00:00,ok,,18.9,93996
+G06_r01.pcapng,G06,yahoo.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:35:16+00:00,ok,"Yahoo | Mail, Weather, Search, Politics, News, Finance, Sports & Videos",31.4,459388
+G43_r01.pcapng,G43,etsy.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:35:51+00:00,ok,etsy.com,17.1,120404
+P03_r01.pcapng,P03,tribune.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:36:12+00:00,ok,"International News, Latest News, Breaking News | The Express Tribune",14.8,133584
+P43_r01.pcapng,P43,pbs.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:36:31+00:00,ok,PBS Pakistan Bureau of Statistics,34.7,131216
+P02_r01.pcapng,P02,thenews.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:37:09+00:00,ok,The News International,28.2,117808
+P30_r01.pcapng,P30,jazzcash.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:37:41+00:00,ok,Just a moment...,23.1,104232
+P10_r01.pcapng,P10,propakistani.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:38:08+00:00,ok,ProPakistani | Technology and Business News from Pakistan,25.5,197676
+P39_r01.pcapng,P39,nadra.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:38:38+00:00,ok,Access Denied,20.0,87500
+G42_r01.pcapng,G42,yelp.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:39:01+00:00,ok,"Restaurants, Dentists, Bars, Beauty Salons, Doctors - Yelp",32.3,123652
+G20_r01.pcapng,G20,office.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:39:38+00:00,ok,Microsoft 365 - Sign into Copilot,20.0,146392
+G11_r01.pcapng,G11,twitch.tv,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:40:01+00:00,timeout,Twitch,70.9,451852
+G00_r01.pcapng,G00,youtube.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:41:16+00:00,ok,YouTube,29.3,118748
+P19_r01.pcapng,P19,pakwheels.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:41:49+00:00,ok,"Buy & Sell Cars, Bikes & Autoparts - Find Car Prices, News & Reviews | PakWheels",34.0,209100
+P22_r01.pcapng,P22,khaadi.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:42:27+00:00,ok,Khaadi,24.6,100484
+P13_r01.pcapng,P13,humnews.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:42:56+00:00,ok,"Urdu News, Latest and Breaking news today in Urdu - ہم نیوز - Hum News Urdu",21.0,166380
+P32_r01.pcapng,P32,psx.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:43:20+00:00,timeout,Pakistan Stock Exchange Limited -,42.3,132024
+P04_r01.pcapng,P04,arynews.tv,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:44:07+00:00,ok,"ARY News - Latest Pakistan News, World News, Business and Sports",21.0,119204
+P29_r01.pcapng,P29,mcb.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:44:31+00:00,ok,MCB Bank Pakistan | Your Ultimate Banking Solution,20.4,123892
+G21_r01.pcapng,G21,whatsapp.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:44:56+00:00,ok,WhatsApp | Secure and Reliable Free Private Messaging and Calling,26.5,101772
+G23_r01.pcapng,G23,github.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:45:26+00:00,ok,GitHub · Change is constant. GitHub keeps you ahead. · GitHub · GitHub,27.3,120976
+P26_r01.pcapng,P26,rozee.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:45:57+00:00,ok,Jobs in Pakistan - ROZEE.PK,24.9,139716
+P20_r01.pcapng,P20,priceoye.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:46:26+00:00,ok,Lowest Mobile Price In Pakistan - Priceoye,23.7,123056
+G46_r01.pcapng,G46,washingtonpost.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:46:54+00:00,ok,,27.6,93488
+G28_r01.pcapng,G28,mozilla.org,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:47:26+00:00,ok,,26.8,86288
+P05_r01.pcapng,P05,dunyanews.tv,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:47:57+00:00,ok,403 Forbidden,25.6,88692
+G07_r01.pcapng,G07,qq.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:48:26+00:00,timeout,New Tab,60.8,90076
+P41_r01.pcapng,P41,pta.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:49:32+00:00,ok,Permission Denied,80.8,87724
+G40_r01.pcapng,G40,vimeo.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:50:58+00:00,ok,Vimeo - All-in-One Video Platform,92.0,141912
+P25_r01.pcapng,P25,foodpanda.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:52:34+00:00,ok,Access to this page has been denied,69.0,120540
+P18_r01.pcapng,P18,zameen.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:53:47+00:00,ok,"Buy, Sell and Rent Property in Pakistan | Zameen.com",47.1,195240
+P42_r01.pcapng,P42,pakistan.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:54:39+00:00,ok,The URL you requested has been blocked,93.0,100680
+G27_r01.pcapng,G27,adobe.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:56:16+00:00,ok,Access Denied,61.6,93916
+G13_r01.pcapng,G13,bing.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:57:21+00:00,ok,Search - Microsoft Bing,47.0,128396
+G44_r01.pcapng,G44,walmart.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:58:12+00:00,ok,Walmart | Save Money. Live better.,30.9,129932
+P11_r01.pcapng,P11,urdupoint.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:58:47+00:00,ok,Just a moment...,25.3,105716
+G31_r01.pcapng,G31,soundcloud.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:59:16+00:00,ok,Stream and listen to music online for free with SoundCloud,21.0,253588
+G39_r01.pcapng,G39,theguardian.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T08:59:41+00:00,ok,"Latest news, sport and opinion from the Guardian",29.8,115728
+P27_r01.pcapng,P27,hbl.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:00:15+00:00,ok,,27.9,95104
+P48_r01.pcapng,P48,zong.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:00:46+00:00,ok,Zong 5G Pakistan | Telecommunications | 5G In Affordable Price,24.1,200640
+P36_r01.pcapng,P36,nu.edu.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:01:14+00:00,ok,FAST NUCES,18.7,138440
+G14_r01.pcapng,G14,microsoft.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:01:36+00:00,ok,"Microsoft – AI, Cloud, Productivity, Gaming & Apps",43.3,202400
+P35_r01.pcapng,P35,lums.edu.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:02:23+00:00,ok,Welcome to LUMS | LUMS,48.5,146228
+P28_r01.pcapng,P28,meezanbank.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:03:16+00:00,ok,Meezan Bank | The Premier Islamic Bank,27.6,135652
+P21_r01.pcapng,P21,telemart.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:03:47+00:00,ok,www.telex.pk,29.8,94892
+P08_r01.pcapng,P08,nation.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:04:21+00:00,ok,"Latest News, Today's Paper and Daily ePaper – The Nation",31.0,129868
+G32_r01.pcapng,G32,dailymotion.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:04:56+00:00,ok,Dailymotion – Social video,28.4,114172
+P00_r01.pcapng,P00,dawn.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:05:28+00:00,ok,Just a moment...,22.3,95824
+G25_r01.pcapng,G25,apple.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:05:54+00:00,ok,Apple,27.9,92520
+G33_r01.pcapng,G33,booking.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:06:26+00:00,ok,"Booking.com | Official site | The best hotels, flights, car rentals & accommodat",47.8,200796
+P07_r01.pcapng,P07,express.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:07:18+00:00,ok,Express News | Express News Urdu | Latest Urdu News,95.7,136988
+P23_r01.pcapng,P23,gulahmedshop.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:08:57+00:00,ok,"Shop Women Clothing, Men, Kids & Bedding at Gul Ahmed Ideas",65.0,154748
+G19_r01.pcapng,G19,wordpress.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:10:07+00:00,ok,WordPress.com: Everything You Need to Build Your Website,25.7,144092
+G36_r01.pcapng,G36,cnn.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:10:36+00:00,timeout,"Breaking News, Latest News and Videos | CNN",69.5,619656
+G08_r01.pcapng,G08,amazon.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:11:51+00:00,ok,Amazon.com. Spend less. Smile more.,54.3,212908
+G49_r01.pcapng,G49,forbes.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:12:49+00:00,ok,forbes.com,29.2,99392
+G05_r01.pcapng,G05,reddit.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:13:22+00:00,ok,,30.1,95220
+P06_r01.pcapng,P06,jang.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:13:56+00:00,ok,Daily Jang: Urdu News - Latest Breaking News update Pakistan - jang.com.pk,17.5,145464
+G04_r01.pcapng,G04,wikipedia.org,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:14:18+00:00,ok,Wikipedia,17.0,97748
+G10_r01.pcapng,G10,netflix.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:14:39+00:00,ok,"Netflix - Watch TV Shows Online, Watch Movies Online",49.9,169620
+P01_r01.pcapng,P01,geo.tv,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:15:33+00:00,ok,"Geo News: Latest News Breaking, Live Videos, World, Entertainment, Royal",19.0,121040
+P09_r01.pcapng,P09,brecorder.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:15:55+00:00,ok,Just a moment...,23.1,107928
+P16_r01.pcapng,P16,daraz.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:16:22+00:00,ok,"Online Shopping in Pakistan: Fashion, Electronics & Groceries - Daraz.pk",36.9,148748
+G03_r01.pcapng,G03,baidu.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:17:05+00:00,ok,百度一下，你就知道,17.2,127904
+G02_r01.pcapng,G02,facebook.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:17:26+00:00,ok,Facebook,24.3,102544
+G34_r01.pcapng,G34,dropbox.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:17:54+00:00,ok,"Dropbox: Secure cloud storage, file sharing, and more",41.4,147356
+G16_r01.pcapng,G16,aliexpress.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:18:39+00:00,ok,AliExpress - Affordable Chinese Stores & Free Shipping - Online Shopping,33.3,272652
+G09_r01.pcapng,G09,instagram.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:19:18+00:00,ok,Instagram,16.6,102620
+P24_r01.pcapng,P24,sapphireonline.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:19:38+00:00,ok,Unstitched & Pret Women's Clothing – SapphireOnline Store,20.3,158504
+G26_r01.pcapng,G26,espn.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:20:02+00:00,ok,ESPN India - Serving Sports Fans. Anytime. Anywhere.,43.9,301124
+G01_r01.pcapng,G01,google.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:20:50+00:00,ok,Google,50.1,99564
+P14_r01.pcapng,P14,aaj.tv,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:21:44+00:00,ok,Home - AAJ,24.0,140796
+P47_r01.pcapng,P47,jazz.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:22:12+00:00,ok,Just a moment...,23.5,100940
+G38_r01.pcapng,G38,spotify.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:22:39+00:00,ok,"Spotify - Web Player: Listen to Music, Podcasts, and Audiobooks Online",36.8,171644
+G30_r01.pcapng,G30,bbc.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:23:20+00:00,ok,"BBC Home | Breaking News, World News, US News, Sports, Business, Innovation, Cli",56.4,254716
+G37_r01.pcapng,G37,nytimes.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:24:20+00:00,ok,nytimes.com,28.2,110884
+G18_r01.pcapng,G18,linkedin.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:24:52+00:00,ok,LinkedIn: Log In or Sign Up,78.7,160752
+G29_r01.pcapng,G29,roblox.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:26:15+00:00,ok,Roblox: Play Free Online Games - Sign Up to Play!,28.7,137944
+P12_r01.pcapng,P12,bolnews.com,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:26:47+00:00,ok,"Bol News – Pakistan Breaking News, Politics, Business, Sports & Entertainment",18.6,130092
+P33_r01.pcapng,P33,hec.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:27:10+00:00,ok,English Home,19.2,109964
+G24_r01.pcapng,G24,stackoverflow.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:27:33+00:00,ok,Forbidden - Stack Exchange,21.5,80212
+G45_r01.pcapng,G45,w3schools.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:27:58+00:00,ok,W3Schools Online Web Tutorials,19.9,211788
+P49_r01.pcapng,P49,ptcl.com.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:28:22+00:00,ok,Pakistan's No. 1 Telecommunication Company - PTCL,25.9,152160
+P45_r01.pcapng,P45,ecp.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:28:51+00:00,ok,Election Commission of Pakistan,35.4,123180
+G17_r01.pcapng,G17,imdb.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:29:55+00:00,ok,403 Forbidden,39.7,106152
+P37_r01.pcapng,P37,pu.edu.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:30:39+00:00,timeout,University of the Punjab,48.3,118820
+P38_r01.pcapng,P38,comsats.edu.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:31:31+00:00,ok,COMSATS University Islamabad,41.9,103188
+G47_r01.pcapng,G47,archive.org,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:32:19+00:00,ok,"Internet Archive: Digital Library of Free & Borrowable Texts, Movies, Music & Wa",51.3,101508
+P34_r01.pcapng,P34,nust.edu.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:33:15+00:00,timeout,Just a moment...,58.6,106140
+G41_r01.pcapng,G41,alibaba.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:34:18+00:00,ok,"Alibaba.com: Manufacturers, Suppliers, Exporters & Importers from the world's la",54.8,197212
+P40_r01.pcapng,P40,fbr.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:35:18+00:00,ok,The URL you requested has been blocked,36.2,100588
+G15_r01.pcapng,G15,imgur.com,global,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:35:59+00:00,timeout,Imgur: The magic of the Internet,61.0,349064
+G20_r05.pcapng,G20,office.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:37:04+00:00,timeout,New Tab,62.1,91756
+G45_r05.pcapng,G45,w3schools.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:38:10+00:00,timeout,New Tab,54.9,79956
+P29_r05.pcapng,P29,mcb.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:39:09+00:00,ok,MCB Bank Pakistan | Your Ultimate Banking Solution,51.4,126344
+G17_r05.pcapng,G17,imdb.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:40:04+00:00,ok,403 Forbidden,123.8,95236
+P46_r05.pcapng,P46,finance.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:42:13+00:00,ok,| Finance Division | Government of Pakistan |,78.7,105172
+G31_r05.pcapng,G31,soundcloud.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:43:42+00:00,ok,Stream and listen to music online for free with SoundCloud,104.4,241000
+P46_r01.pcapng,P46,finance.gov.pk,pk,1,quad9,149.112.112.112,netA_wifi,2026-11-10T09:52:30+00:00,ok,| Finance Division | Government of Pakistan |,55.0,93460
+G46_r05.pcapng,G46,washingtonpost.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:53:29+00:00,ok,,80.3,90800
+G28_r05.pcapng,G28,mozilla.org,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:54:54+00:00,ok,"Mozilla - Internet for people, not profit (US)",84.5,100920
+P01_r05.pcapng,P01,geo.tv,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:56:22+00:00,ok,"Geo News: Latest News Breaking, Live Videos, World, Entertainment, Royal",60.3,121840
+G39_r05.pcapng,G39,theguardian.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:57:27+00:00,ok,"Latest news, sport and opinion from the Guardian",66.3,120472
+P12_r05.pcapng,P12,bolnews.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:58:37+00:00,ok,"Bol News – Pakistan Breaking News, Politics, Business, Sports & Entertainment",28.9,130464
+G22_r05.pcapng,G22,paypal.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T09:59:10+00:00,ok,paypal.com,82.4,109092
+G00_r05.pcapng,G00,youtube.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:00:36+00:00,ok,YouTube,42.7,115884
+G20_r03.pcapng,G20,office.com,global,3,quad9,149.112.112.112,netA_wifi,2026-11-10T10:02:29+00:00,ok,,79.9,99660
+G45_r03.pcapng,G45,w3schools.com,global,3,quad9,149.112.112.112,netA_wifi,2026-11-10T10:03:53+00:00,ok,W3Schools Online Web Tutorials,71.8,308632
+G17_r03.pcapng,G17,imdb.com,global,3,quad9,149.112.112.112,netA_wifi,2026-11-10T10:05:09+00:00,ok,403 Forbidden,19.3,91496
+P09_r05.pcapng,P09,brecorder.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:06:12+00:00,ok,Just a moment...,54.0,103180
+G48_r05.pcapng,G48,duckduckgo.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:07:10+00:00,ok,DuckDuckGo - Protection. Privacy. Peace of mind.,43.2,101416
+P17_r05.pcapng,P17,olx.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:07:57+00:00,ok,OLX - Buy and Sell for free anywhere in Pakistan with OLX online classifieds,43.6,145664
+P04_r05.pcapng,P04,arynews.tv,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:08:44+00:00,ok,"ARY News - Latest Pakistan News, World News, Business and Sports",39.0,121952
+P20_r05.pcapng,P20,priceoye.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:09:27+00:00,ok,Lowest Mobile Price In Pakistan - Priceoye,38.9,122320
+P07_r05.pcapng,P07,express.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:10:09+00:00,ok,Express News | Express News Urdu | Latest Urdu News,67.6,131572
+G40_r05.pcapng,G40,vimeo.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:11:21+00:00,ok,Vimeo - All-in-One Video Platform,30.8,140728
+P37_r05.pcapng,P37,pu.edu.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:11:55+00:00,ok,University of the Punjab,91.7,118888
+G11_r05.pcapng,G11,twitch.tv,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:13:31+00:00,timeout,New Tab,51.3,94264
+P44_r05.pcapng,P44,punjab.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:14:26+00:00,ok,The URL you requested has been blocked,20.7,90120
+G19_r05.pcapng,G19,wordpress.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:14:51+00:00,ok,WordPress.com: Everything You Need to Build Your Website,34.3,145932
+P42_r05.pcapng,P42,pakistan.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:15:29+00:00,ok,The URL you requested has been blocked,35.9,94504
+P11_r05.pcapng,P11,urdupoint.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:16:09+00:00,ok,Just a moment...,40.8,99928
+G03_r05.pcapng,G03,baidu.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:16:53+00:00,ok,百度一下，你就知道,40.9,131652
+P31_r05.pcapng,P31,nbp.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:17:38+00:00,ok,National Bank of Pakistan,42.3,88304
+G33_r05.pcapng,G33,booking.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:18:24+00:00,ok,"Booking.com | Official site | The best hotels, flights, car rentals & accommodat",28.4,148000
+G16_r05.pcapng,G16,aliexpress.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:18:56+00:00,timeout,AliExpress - Affordable Chinese Stores & Free Shipping - Online Shopping,41.7,268564
+P22_r05.pcapng,P22,khaadi.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:19:42+00:00,ok,Khaadi,32.0,97352
+G07_r05.pcapng,G07,qq.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:20:17+00:00,ok,腾讯网,31.4,207680
+P24_r05.pcapng,P24,sapphireonline.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:20:53+00:00,ok,Unstitched & Pret Women's Clothing – SapphireOnline Store,28.2,161408
+P02_r05.pcapng,P02,thenews.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:21:25+00:00,ok,The News International,34.9,117264
+G08_r05.pcapng,G08,amazon.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:22:04+00:00,ok,Amazon.com. Spend less. Smile more.,31.7,126648
+G49_r05.pcapng,G49,forbes.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:22:40+00:00,ok,forbes.com,34.3,118552
+P40_r05.pcapng,P40,fbr.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:23:18+00:00,ok,The URL you requested has been blocked,29.4,81760
+G05_r05.pcapng,G05,reddit.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:23:51+00:00,ok,,33.8,95916
+P15_r05.pcapng,P15,dailypakistan.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:24:28+00:00,ok,Daily Pakistan - Latest Urdu News & Daily Newspaper,38.4,148160
+G47_r05.pcapng,G47,archive.org,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:25:10+00:00,ok,"Internet Archive: Digital Library of Free & Borrowable Texts, Movies, Music & Wa",32.0,105552
+G02_r05.pcapng,G02,facebook.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:25:46+00:00,ok,Facebook,35.9,103040
+P23_r05.pcapng,P23,gulahmedshop.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:26:26+00:00,ok,"Shop Women Clothing, Men, Kids & Bedding at Gul Ahmed Ideas",30.6,168188
+G18_r05.pcapng,G18,linkedin.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:27:00+00:00,ok,LinkedIn: Log In or Sign Up,36.8,145284
+P05_r05.pcapng,P05,dunyanews.tv,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:27:41+00:00,ok,403 Forbidden,37.4,88148
+P34_r05.pcapng,P34,nust.edu.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:28:22+00:00,ok,Just a moment...,38.5,106104
+P03_r05.pcapng,P03,tribune.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:29:04+00:00,ok,"International News, Latest News, Breaking News | The Express Tribune",43.1,128548
+G24_r05.pcapng,G24,stackoverflow.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:29:51+00:00,ok,Forbidden - Stack Exchange,23.1,87960
+G37_r05.pcapng,G37,nytimes.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:30:18+00:00,ok,nytimes.com,34.7,111180
+P35_r05.pcapng,P35,lums.edu.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:30:56+00:00,timeout,Welcome to LUMS | LUMS,74.0,146644
+G06_r05.pcapng,G06,yahoo.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:32:14+00:00,ok,"Yahoo | Mail, Weather, Search, Politics, News, Finance, Sports & Videos",391.8,792324
+G27_r05.pcapng,G27,adobe.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:38:50+00:00,ok,,40.6,252320
+P36_r05.pcapng,P36,nu.edu.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:44:39+00:00,ok,FAST NUCES,26.7,136436
+P39_r05.pcapng,P39,nadra.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:45:10+00:00,ok,Access Denied,21.5,80164
+P49_r05.pcapng,P49,ptcl.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:45:35+00:00,ok,Pakistan's No. 1 Telecommunication Company - PTCL,29.1,142672
+G38_r05.pcapng,G38,spotify.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:46:08+00:00,ok,"Spotify - Web Player: Listen to Music, Podcasts, and Audiobooks Online",45.9,168824
+G13_r05.pcapng,G13,bing.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:46:59+00:00,ok,Search - Microsoft Bing,44.6,95876
+P41_r05.pcapng,P41,pta.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:47:47+00:00,ok,Permission Denied,31.8,88380
+G15_r05.pcapng,G15,imgur.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:48:22+00:00,timeout,Imgur: The magic of the Internet,49.5,538640
+G44_r05.pcapng,G44,walmart.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:49:16+00:00,ok,Walmart | Save Money. Live better.,20.1,117176
+G01_r05.pcapng,G01,google.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:49:40+00:00,ok,Google,18.6,96560
+P33_r05.pcapng,P33,hec.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:50:02+00:00,ok,English Home,25.3,110340
+G41_r05.pcapng,G41,alibaba.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:50:31+00:00,ok,"Alibaba.com: Manufacturers, Suppliers, Exporters & Importers from the world's la",52.1,202240
+P45_r05.pcapng,P45,ecp.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:51:27+00:00,ok,Election Commission of Pakistan,31.5,121888
+P21_r05.pcapng,P21,telemart.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:52:03+00:00,ok,"Online Shopping in Pakistan – Mobiles, Fashion & Electronics – TeleX (Telemart)",26.2,168540
+G25_r05.pcapng,G25,apple.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:52:33+00:00,ok,Apple,23.1,102448
+P27_r05.pcapng,P27,hbl.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:53:00+00:00,ok,,21.5,91736
+P14_r05.pcapng,P14,aaj.tv,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:53:25+00:00,ok,Home - AAJ,49.5,141932
+P10_r05.pcapng,P10,propakistani.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:54:19+00:00,ok,ProPakistani | Technology and Business News from Pakistan,24.2,198072
+P25_r05.pcapng,P25,foodpanda.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:54:47+00:00,ok,Access to this page has been denied,23.4,117184
+G32_r05.pcapng,G32,dailymotion.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:55:14+00:00,ok,Dailymotion – Social video,27.5,104568
+G10_r05.pcapng,G10,netflix.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:55:46+00:00,ok,"Netflix - Watch TV Shows Online, Watch Movies Online",38.0,170388
+P00_r05.pcapng,P00,dawn.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:56:27+00:00,ok,Just a moment...,26.7,108100
+G43_r05.pcapng,G43,etsy.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:56:58+00:00,ok,etsy.com,105.9,110868
+G12_r05.pcapng,G12,ebay.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T10:59:13+00:00,ok,Error Page | eBay,117.7,89468
+G23_r05.pcapng,G23,github.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:01:16+00:00,ok,GitHub · Change is constant. GitHub keeps you ahead. · GitHub · GitHub,28.7,108432
+G35_r05.pcapng,G35,quora.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:01:48+00:00,ok,Just a moment...,25.8,103800
+G26_r05.pcapng,G26,espn.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:02:18+00:00,ok,ESPN India - Serving Sports Fans. Anytime. Anywhere.,56.1,351108
+P06_r05.pcapng,P06,jang.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:03:18+00:00,ok,Daily Jang: Urdu News - Latest Breaking News update Pakistan - jang.com.pk,51.1,149096
+P47_r05.pcapng,P47,jazz.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:04:13+00:00,ok,Just a moment...,20.4,111724
+P48_r05.pcapng,P48,zong.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:04:37+00:00,timeout,Zong 5G Pakistan | Telecommunications | 5G In Affordable Price,101.3,155376
+G42_r05.pcapng,G42,yelp.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:06:57+00:00,ok,yelp.com,97.3,101444
+P16_r05.pcapng,P16,daraz.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:08:39+00:00,ok,"Online Shopping in Pakistan: Fashion, Electronics & Groceries - Daraz.pk",22.4,146688
+P18_r05.pcapng,P18,zameen.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:09:06+00:00,ok,"Buy, Sell and Rent Property in Pakistan | Zameen.com",25.0,200284
+G29_r05.pcapng,G29,roblox.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:09:35+00:00,ok,Roblox: Play Free Online Games - Sign Up to Play!,26.4,132104
+P13_r05.pcapng,P13,humnews.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:10:06+00:00,ok,"Urdu News, Latest and Breaking news today in Urdu - ہم نیوز - Hum News Urdu",38.2,161656
+G04_r05.pcapng,G04,wikipedia.org,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:10:48+00:00,ok,Wikipedia,15.2,99324
+G21_r05.pcapng,G21,whatsapp.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:11:07+00:00,ok,WhatsApp | Secure and Reliable Free Private Messaging and Calling,23.3,97236
+G14_r05.pcapng,G14,microsoft.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:11:34+00:00,ok,"Microsoft – AI, Cloud, Productivity, Gaming & Apps",51.7,202448
+P26_r05.pcapng,P26,rozee.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:12:30+00:00,ok,Jobs in Pakistan - ROZEE.PK,26.5,141096
+P30_r05.pcapng,P30,jazzcash.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:13:00+00:00,timeout,Just a moment...,152.6,102120
+G09_r05.pcapng,G09,instagram.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:16:21+00:00,ok,Instagram,16.1,97476
+P32_r05.pcapng,P32,psx.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:16:41+00:00,ok,,19.4,97220
+P19_r05.pcapng,P19,pakwheels.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:17:04+00:00,ok,"Buy & Sell Cars, Bikes & Autoparts - Find Car Prices, News & Reviews | PakWheels",44.2,214896
+P28_r05.pcapng,P28,meezanbank.com,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:17:52+00:00,ok,Meezan Bank | The Premier Islamic Bank,19.1,138844
+G30_r05.pcapng,G30,bbc.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:18:16+00:00,ok,"BBC Home | Breaking News, World News, US News, Sports, Business, Innovation, Cli",35.5,253392
+P38_r05.pcapng,P38,comsats.edu.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:18:56+00:00,ok,COMSATS University Islamabad,15.3,94264
+P08_r05.pcapng,P08,nation.com.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:19:15+00:00,ok,"Latest News, Today's Paper and Daily ePaper – The Nation",17.6,133344
+G36_r05.pcapng,G36,cnn.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:19:36+00:00,timeout,"Breaking News, Latest News and Videos | CNN",46.9,540604
+G34_r05.pcapng,G34,dropbox.com,global,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:20:27+00:00,ok,"Dropbox: Secure cloud storage, file sharing, and more",37.6,109372
+P43_r05.pcapng,P43,pbs.gov.pk,pk,5,quad9,149.112.112.112,netA_wifi,2026-11-10T11:21:10+00:00,ok,PBS Pakistan Bureau of Statistics,31.7,122648
+G01_r09.pcapng,G01,google.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:21:46+00:00,ok,Google,13.9,99404
+P35_r09.pcapng,P35,lums.edu.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:22:03+00:00,ok,Welcome to LUMS | LUMS,37.5,152252
+P17_r09.pcapng,P17,olx.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:22:45+00:00,ok,OLX - Buy and Sell for free anywhere in Pakistan with OLX online classifieds,14.4,147192
+G43_r09.pcapng,G43,etsy.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:23:04+00:00,ok,etsy.com,20.3,104736
+G40_r09.pcapng,G40,vimeo.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:23:28+00:00,ok,Vimeo - All-in-One Video Platform,20.5,155120
+G39_r09.pcapng,G39,theguardian.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:23:52+00:00,ok,"Latest news, sport and opinion from the Guardian",16.2,117436
+G11_r09.pcapng,G11,twitch.tv,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:24:12+00:00,timeout,Twitch,46.2,493924
+P02_r09.pcapng,P02,thenews.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:25:02+00:00,ok,The News International,27.7,118760
+G48_r09.pcapng,G48,duckduckgo.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:25:33+00:00,ok,DuckDuckGo - Protection. Privacy. Peace of mind.,15.0,95940
+G25_r09.pcapng,G25,apple.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:25:52+00:00,ok,Apple,18.7,92388
+P37_r09.pcapng,P37,pu.edu.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:26:14+00:00,ok,University of the Punjab,31.1,116764
+P08_r09.pcapng,P08,nation.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:26:49+00:00,ok,"Latest News, Today's Paper and Daily ePaper – The Nation",14.4,135492
+P30_r09.pcapng,P30,jazzcash.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:27:08+00:00,ok,Just a moment...,25.8,89988
+G12_r09.pcapng,G12,ebay.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:27:37+00:00,ok,Error Page | eBay,11.6,95344
+G44_r09.pcapng,G44,walmart.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:27:54+00:00,ok,Walmart | Save Money. Live better.,29.5,137492
+P12_r09.pcapng,P12,bolnews.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:28:27+00:00,ok,"Bol News – Pakistan Breaking News, Politics, Business, Sports & Entertainment",13.9,124024
+P05_r09.pcapng,P05,dunyanews.tv,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:28:45+00:00,ok,403 Forbidden,15.2,71496
+P18_r09.pcapng,P18,zameen.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:29:04+00:00,ok,"Buy, Sell and Rent Property in Pakistan | Zameen.com",24.9,202304
+G08_r09.pcapng,G08,amazon.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:29:33+00:00,ok,Amazon.com. Spend less. Smile more.,18.4,118124
+G19_r09.pcapng,G19,wordpress.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:29:56+00:00,ok,WordPress.com: Everything You Need to Build Your Website,24.0,137028
+P07_r09.pcapng,P07,express.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:30:25+00:00,ok,Express News | Express News Urdu | Latest Urdu News,23.4,131236
+P09_r09.pcapng,P09,brecorder.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:30:52+00:00,ok,Just a moment...,18.1,111144
+P28_r09.pcapng,P28,meezanbank.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:31:14+00:00,ok,Meezan Bank | The Premier Islamic Bank,16.5,136036
+P20_r09.pcapng,P20,priceoye.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:31:35+00:00,ok,Lowest Mobile Price In Pakistan - Priceoye,20.3,119892
+G04_r09.pcapng,G04,wikipedia.org,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:31:59+00:00,ok,Wikipedia,17.3,110800
+G32_r09.pcapng,G32,dailymotion.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:32:20+00:00,ok,Dailymotion – Social video,16.9,104992
+P22_r09.pcapng,P22,khaadi.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:32:40+00:00,ok,Khaadi,18.9,108304
+P33_r09.pcapng,P33,hec.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:33:04+00:00,ok,English Home,15.7,107628
+G00_r09.pcapng,G00,youtube.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:33:23+00:00,ok,YouTube,21.2,117448
+P26_r09.pcapng,P26,rozee.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:33:49+00:00,ok,Jobs in Pakistan - ROZEE.PK,20.3,147288
+G33_r09.pcapng,G33,booking.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:34:13+00:00,ok,"Booking.com | Official site | The best hotels, flights, car rentals & accommodat",23.9,116216
+P10_r09.pcapng,P10,propakistani.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:34:40+00:00,ok,ProPakistani | Technology and Business News from Pakistan,21.7,200820
+G22_r09.pcapng,G22,paypal.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:35:07+00:00,ok,paypal.com,33.4,112884
+P24_r09.pcapng,P24,sapphireonline.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:35:45+00:00,ok,Unstitched & Pret Women's Clothing – SapphireOnline Store,39.7,163688
+P41_r09.pcapng,P41,pta.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:36:28+00:00,ok,Permission Denied,22.1,88276
+P45_r09.pcapng,P45,ecp.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:36:54+00:00,ok,Election Commission of Pakistan,20.9,119500
+G26_r09.pcapng,G26,espn.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:37:18+00:00,ok,ESPN India - Serving Sports Fans. Anytime. Anywhere.,28.9,265504
+P13_r09.pcapng,P13,humnews.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:37:51+00:00,ok,"Urdu News, Latest and Breaking news today in Urdu - ہم نیوز - Hum News Urdu",17.5,171692
+G18_r09.pcapng,G18,linkedin.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:38:13+00:00,ok,LinkedIn: Log In or Sign Up,24.5,164484
+P32_r09.pcapng,P32,psx.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:38:41+00:00,timeout,Pakistan Stock Exchange Limited -,44.2,143088
+G05_r09.pcapng,G05,reddit.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:39:30+00:00,ok,,15.1,101316
+P15_r09.pcapng,P15,dailypakistan.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:39:49+00:00,ok,Daily Pakistan - Latest Urdu News & Daily Newspaper,22.6,137436
+P42_r09.pcapng,P42,pakistan.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:40:15+00:00,ok,The URL you requested has been blocked,20.1,87956
+G36_r09.pcapng,G36,cnn.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:40:39+00:00,timeout,"Breaking News, Latest News and Videos | CNN",41.6,580088
+P23_r09.pcapng,P23,gulahmedshop.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:41:25+00:00,ok,"Shop Women Clothing, Men, Kids & Bedding at Gul Ahmed Ideas",38.0,154868
+P36_r09.pcapng,P36,nu.edu.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:42:07+00:00,ok,FAST NUCES,27.3,137688
+G47_r09.pcapng,G47,archive.org,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:42:38+00:00,ok,"Internet Archive: Digital Library of Free & Borrowable Texts, Movies, Music & Wa",29.3,102056
+P27_r09.pcapng,P27,hbl.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:43:11+00:00,ok,,16.9,86616
+G06_r09.pcapng,G06,yahoo.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:43:32+00:00,ok,"Yahoo | Mail, Weather, Search, Politics, News, Finance, Sports & Videos",55.9,740648
+G34_r09.pcapng,G34,dropbox.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:44:33+00:00,ok,"Dropbox: Secure cloud storage, file sharing, and more",28.3,127176
+G13_r09.pcapng,G13,bing.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:45:05+00:00,ok,Search - Microsoft Bing,16.2,134152
+G02_r09.pcapng,G02,facebook.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:45:25+00:00,ok,Facebook,15.0,101576
+G24_r09.pcapng,G24,stackoverflow.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:45:44+00:00,ok,Forbidden - Stack Exchange,23.5,85780
+P21_r09.pcapng,P21,telemart.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:46:11+00:00,ok,"Online Shopping in Pakistan – Mobiles, Fashion & Electronics – TeleX (Telemart)",16.5,136740
+G16_r09.pcapng,G16,aliexpress.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:46:32+00:00,ok,AliExpress - Affordable Chinese Stores & Free Shipping - Online Shopping,37.3,270804
+G09_r09.pcapng,G09,instagram.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:47:14+00:00,ok,Instagram,17.5,102084
+G14_r09.pcapng,G14,microsoft.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:47:35+00:00,ok,"Microsoft – AI, Cloud, Productivity, Gaming & Apps",34.1,194796
+G42_r09.pcapng,G42,yelp.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:48:13+00:00,ok,yelp.com,18.3,100920
+P47_r09.pcapng,P47,jazz.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:48:34+00:00,ok,Just a moment...,29.6,108404
+P31_r09.pcapng,P31,nbp.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:49:08+00:00,ok,National Bank of Pakistan,18.0,87504
+G21_r09.pcapng,G21,whatsapp.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:49:30+00:00,ok,WhatsApp | Secure and Reliable Free Private Messaging and Calling,32.6,95732
+P03_r09.pcapng,P03,tribune.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:50:06+00:00,ok,"International News, Latest News, Breaking News | The Express Tribune",21.1,134256
+P29_r09.pcapng,P29,mcb.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:50:31+00:00,ok,MCB Bank Pakistan | Your Ultimate Banking Solution,21.5,126000
+P16_r09.pcapng,P16,daraz.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:50:57+00:00,ok,"Online Shopping in Pakistan: Fashion, Electronics & Groceries - Daraz.pk",34.0,142564
+G38_r09.pcapng,G38,spotify.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:51:35+00:00,ok,"Spotify - Web Player: Listen to Music, Podcasts, and Audiobooks Online",32.4,173468
+G27_r09.pcapng,G27,adobe.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:52:12+00:00,ok,Access Denied,12.5,96148
+G49_r09.pcapng,G49,forbes.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:52:28+00:00,ok,forbes.com,14.2,114772
+G10_r09.pcapng,G10,netflix.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:52:46+00:00,ok,"Netflix - Watch TV Shows Online, Watch Movies Online",29.0,156980
+G20_r09.pcapng,G20,office.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:53:19+00:00,ok,Microsoft 365 - Sign into Copilot,20.9,160812
+P19_r09.pcapng,P19,pakwheels.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:53:44+00:00,ok,"Buy & Sell Cars, Bikes & Autoparts - Find Car Prices, News & Reviews | PakWheels",27.0,207364
+P11_r09.pcapng,P11,urdupoint.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:54:14+00:00,ok,Just a moment...,16.6,104260
+G37_r09.pcapng,G37,nytimes.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:54:35+00:00,ok,nytimes.com,14.0,112372
+P44_r09.pcapng,P44,punjab.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:54:52+00:00,ok,The URL you requested has been blocked,11.9,80016
+G23_r09.pcapng,G23,github.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:55:08+00:00,ok,GitHub · Change is constant. GitHub keeps you ahead. · GitHub · GitHub,14.4,112224
+G45_r09.pcapng,G45,w3schools.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:55:26+00:00,ok,W3Schools Online Web Tutorials,17.3,226492
+G07_r09.pcapng,G07,qq.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:55:47+00:00,ok,腾讯网,36.3,214264
+G03_r09.pcapng,G03,baidu.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:56:27+00:00,ok,百度一下，你就知道,35.4,124796
+G30_r09.pcapng,G30,bbc.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:57:06+00:00,ok,"BBC Home | Breaking News, World News, US News, Sports, Business, Innovation, Cli",27.6,250828
+G28_r09.pcapng,G28,mozilla.org,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:57:37+00:00,ok,"Mozilla - Internet for people, not profit (US)",19.8,108360
+P00_r09.pcapng,P00,dawn.com,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:58:01+00:00,ok,Just a moment...,23.0,107484
+G15_r09.pcapng,G15,imgur.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:58:28+00:00,timeout,Imgur: The magic of the Internet,47.5,530472
+G46_r09.pcapng,G46,washingtonpost.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:59:19+00:00,ok,,12.9,94944
+P25_r09.pcapng,P25,foodpanda.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:59:36+00:00,ok,Access to this page has been denied,14.9,116772
+P14_r09.pcapng,P14,aaj.tv,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T11:59:55+00:00,ok,Home - AAJ,15.3,142424
+G31_r09.pcapng,G31,soundcloud.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:00:14+00:00,ok,Stream and listen to music online for free with SoundCloud,13.0,230924
+P06_r09.pcapng,P06,jang.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:00:31+00:00,ok,Daily Jang: Urdu News - Latest Breaking News update Pakistan - jang.com.pk,17.6,145424
+P38_r09.pcapng,P38,comsats.edu.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:00:52+00:00,ok,COMSATS University Islamabad,12.6,100972
+P43_r09.pcapng,P43,pbs.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:01:09+00:00,ok,PBS Pakistan Bureau of Statistics,16.4,129592
+P34_r09.pcapng,P34,nust.edu.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:01:29+00:00,ok,Just a moment...,13.9,104068
+P48_r09.pcapng,P48,zong.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:01:47+00:00,ok,Zong 5G Pakistan | Telecommunications | 5G In Affordable Price,16.7,174272
+G41_r09.pcapng,G41,alibaba.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:02:08+00:00,ok,"Alibaba.com: Manufacturers, Suppliers, Exporters & Importers from the world's la",22.7,215472
+G35_r09.pcapng,G35,quora.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:02:34+00:00,ok,Just a moment...,16.0,99312
+P39_r09.pcapng,P39,nadra.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:02:54+00:00,ok,Access Denied,19.6,90908
+G17_r09.pcapng,G17,imdb.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:03:17+00:00,ok,403 Forbidden,16.9,94084
+P49_r09.pcapng,P49,ptcl.com.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:03:38+00:00,ok,Pakistan's No. 1 Telecommunication Company - PTCL,15.1,137860
+G29_r09.pcapng,G29,roblox.com,global,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:03:57+00:00,ok,Roblox: Play Free Online Games - Sign Up to Play!,17.3,141008
+P40_r09.pcapng,P40,fbr.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:04:18+00:00,ok,The URL you requested has been blocked,10.9,88460
+P01_r09.pcapng,P01,geo.tv,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:04:32+00:00,ok,"Geo News: Latest News Breaking, Live Videos, World, Entertainment, Royal",12.0,123044
+P04_r09.pcapng,P04,arynews.tv,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:04:48+00:00,ok,"ARY News - Latest Pakistan News, World News, Business and Sports",14.0,180420
+P46_r09.pcapng,P46,finance.gov.pk,pk,9,quad9,149.112.112.112,netA_wifi,2026-11-10T12:05:06+00:00,ok,| Finance Division | Government of Pakistan |,8.9,86168

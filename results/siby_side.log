@@ -1,0 +1,19 @@
+14:28:30 Siby baselines ngram_rf F1=0.961
+14:28:30 saved siby_baselines.json
+14:29:40 Siby baselines kfp F1=0.913
+14:29:40 saved siby_baselines.json
+14:30:37 Siby baselines cumul F1=0.797
+14:30:37 saved siby_baselines.json
+14:31:22 Siby baselines burst_rf F1=0.904
+14:31:22 saved siby_baselines.json
+14:32:49 Siby baselines fused_rf F1=0.959
+14:32:49 saved siby_baselines.json
+15:06:38 Siby baselines df F1=0.593
+15:06:38 saved siby_baselines.json
+15:17:18 Siby baselines cnn_se F1=0.680
+15:17:18 saved siby_baselines.json
+15:26:23 Siby baselines cnn_nose F1=0.788
+15:26:23 saved siby_baselines.json
+15:29:49 Siby cross LOC1 LOC1 F1=0.935
+15:31:38 Siby cross LOC1 LOC2 F1=0.749
+15:37:43 Siby cross LOC1 LOC3 F1=0.806

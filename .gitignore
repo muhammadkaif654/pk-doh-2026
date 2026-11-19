@@ -1,0 +1,9 @@
+# raw captures and caches (large, not needed to rerun the experiments)
+data/pcap/**/*.pcapng
+data/pcap/*/
+data/cache/
+baseline_siby/
+__pycache__/
+*.pyc
+node_modules/
+.ipynb_checkpoints/

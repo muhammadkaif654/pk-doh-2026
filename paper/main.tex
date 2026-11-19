@@ -1,0 +1,497 @@
+%% Phase 4 research paper -- Springer Nature LaTeX template (sn-jnl).
+%% Compile inside the "Springer Nature LaTeX Template" (Overleaf), which supplies sn-jnl.cls and
+%% the bibliography styles. Compiler: pdfLaTeX. Bibliography: references.bib (BibTeX).
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{array}%
+\usepackage{url}%
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\Fone}{F\textsubscript{1}}
+\newcommand{\pub}{\textsuperscript{*}}
+
+\raggedbottom
+
+\begin{document}
+
+\title[Website Fingerprinting on Encrypted DNS, Revisited]{Does Encrypted DNS Still Hide Visited Websites? Reproducing a 2020 Fingerprinting Attack and Testing It from Pakistan Against Deployed Padding}
+
+\author*[1]{\fnm{Muhammad} \sur{Kaif}}\email{i240071@isb.nu.edu.pk}
+\author[1]{\fnm{Samran} \sur{Ahmad}}\email{i243013@isb.nu.edu.pk}
+\affil*[1]{\orgname{National University of Computer and Emerging Sciences (FAST-NUCES)}, \orgaddress{\city{Islamabad}, \country{Pakistan}}}
+
+\abstract{DNS over HTTPS (DoH) encrypts the names a browser resolves, yet the sizes and timing of encrypted records still reveal the visited website. The best-known attack of this kind (Siby et al., NDSS 2020) was measured on 2018--19 traffic and never re-measured, although browsers, TLS and resolver padding have since changed. This study reproduces it on its released data under a tolerance fixed in advance; collects PK-DoH-2026, 1,998 Chrome page loads of 100 websites (50 Pakistani) in Pakistan against a padding (Cloudflare) and a non-padding (Quad9) resolver; audits the padding of 11 public resolvers; and proposes a fused random forest over size n-grams, burst statistics and timing. The reproduction matches the published macro-\Fone{} (0.893 against 0.898; equivalence test $p<0.001$), and five of six published configurations are within tolerance, one under a corrected reading of the setup. In 2026 the attack identifies sites with macro-\Fone{} 0.948 against the unpadded resolver but 0.342 against the padded one, and 2018--19 models are at chance on 2026 traffic. Only one of the 11 resolvers always pads; Cloudflare and Google pad DoH replies only when the client pads its query. The fused model is the only method within 0.025 of the best on both resolvers (0.444 padded, 0.923 unpadded); under padding it gains 0.102 (+30\%) over the original attack (Wilcoxon $p=0.002$). Encrypted DNS therefore still leaks the visited site; padding helps only where client and resolver both apply it, and even then does not reduce the attack to chance.}
+
+\keywords{website fingerprinting, DNS over HTTPS, EDNS(0) padding, traffic analysis, reproducibility, privacy measurement}
+
+\maketitle
+
+%% ===================================================================== 1
+\section{Introduction}\label{sec:intro}
+
+DNS over HTTPS (DoH)~\cite{rfc8484} and DNS over TLS (DoT)~\cite{rfc7858} encrypt the names a browser resolves; thousands of public resolvers now offer them~\cite{bielefeld2026}, and Chrome, the browser used in this study, supports DoH natively. Encryption hides the content of each message, but not the traffic's shape: an observer between the user and the resolver, such as an ISP or a Wi-Fi operator, still sees how many encrypted records a page load produces, their sizes and their timing. Siby et al.~\cite{siby2020} showed in 2020 that this shape identifies the visited page, with a macro-\Fone{} of 0.898 over 1,500 pages. Even with EDNS(0) padding to 468-byte blocks~\cite{rfc7830,rfc8467}, the attack still reached 0.430.
+
+Since then, browsers have moved to TLS~1.3~\cite{rfc8446}, Chrome pads its own queries (Section~\ref{sec:results}), and recent attacks have moved to newer transports~\cite{zhang2026dohfuse,salari2025odoh,mouregarrido2026,csikor2025,rfc9250}. Three questions remain open. Can the 2020 results be reproduced from the released artefact? Do models built in one region and era say anything about users elsewhere, years later, given that all recent measurements come from a single country~\cite{mouregarrido2026,salari2025odoh,csikor2025}? And how much does the padding a user actually receives reduce the attack? Padding has so far been surveyed~\cite{li2025unraveling} or simulated~\cite{gong2026wfcat,jiang2026camouflage}, but never tied to attack accuracy under otherwise identical conditions. The contributions of this work are:
+\begin{itemize}
+\item a \textbf{pre-registered reproduction} of Siby et al.~\cite{siby2020} on the authors' data. It succeeds within 0.005 \Fone{}, five of six configurations fall within tolerance (one under a corrected reading of the setup), and three mismatches between the released artefact and the paper are documented;
+\item \textbf{PK-DoH-2026}, to the authors' knowledge the first encrypted-DNS fingerprinting dataset from South Asia: 1,998 Chrome~157 page loads of 100 sites, 50 of them Pakistani;
+\item a \textbf{padding audit of 11 resolvers} with decrypted ground truth, together with a single-factor contrast showing that deployed padding cuts macro-\Fone{} from 0.948 to 0.342;
+\item a \textbf{fused random forest}, the only method within 0.025 of the best on both resolvers (+0.102 over the original attack under padding), with ablations that locate the gain in burst structure;
+\item a \textbf{cross-era transfer matrix and recovery curves}, which show that 2018--19 models are at chance on 2026 traffic.
+\end{itemize}
+The rest of the paper is organised as follows. Section~\ref{sec:related} reviews related work, Section~\ref{sec:method} presents the methodology and Section~\ref{sec:setup} the experimental setup. Section~\ref{sec:results} reports the results, Section~\ref{sec:comparison} compares them with the base papers and the state of the art, and Section~\ref{sec:ablation} presents the ablations. Section~\ref{sec:discussion} discusses the findings and their limits, and Section~\ref{sec:conclusion} concludes.
+
+%% ===================================================================== 2
+\section{Related Work}\label{sec:related}
+
+\paragraph{Fingerprinting encrypted DNS.} Siby et al.~\cite{siby2020} count uni- and bi-grams of signed TLS record sizes and burst sizes and classify them with a random forest~\cite{breiman2001rf}. They found that the attack degrades across locations (16--27\%) and that padding reduces but does not remove it, which Bushart and Rossow~\cite{bushart2020} confirmed using query sequences and timing. Later work has followed newer transports. DoHFuse~\cite{zhang2026dohfuse} attacks DoH/3 with a timing-only model (95.48\% accuracy on 100 sites), and its size-only control still reaches 67.39\% on 449 sites. Salari et al.~\cite{salari2025odoh} attack Oblivious DoH and lose 9\% on an unseen US location. Csikor et al.~\cite{csikor2025} and Moure-Garrido et al.~\cite{mouregarrido2026} attack DNS over QUIC; the latter use burst statistics and report 53.2--81.0\% cross-node transfer within one country. Li et al.~\cite{li2025unraveling} surveyed padding across public DoH resolvers and built a padding-resilient timing attack on HTTP/2.
+
+\paragraph{Ecosystem, drift and realism.} Bielefeld et al.~\cite{bielefeld2026} surveyed more than three thousand encrypted-DNS resolvers but not their padding. Ahmad et al.~\cite{ahmad2026ipv6} showed that IP addresses alone leak sites and that CDN mappings are regional. Jimenez-Berenguel et al.~\cite{jimenez2025forgery} priced a DNS defence by its overhead, a framing adopted here. Fingerprints drift with time and browser versions~\cite{shusterman2026}, but a few traces per site recover much of the loss~\cite{zhao2026traverse}. Timing histograms with channel attention survive size-only defences~\cite{gong2026wfcat}. Realistic conditions and genuine traffic lower accuracy~\cite{deng2026,jansen2026gtt23}.
+
+\paragraph{Positioning.} Table~\ref{tab:coverage} summarises the key studies. Each covers some of these dimensions. This work is the only one that covers every dimension except newer transports: it re-runs the original attack on its own data, measures outside the US and Europe, compares eras on shared labels, and ties deployed padding to the accuracy of an attack on the same resolver.
+
+\begin{table}[t]
+\caption{Coverage of key related work (\checkmark: measured, not only discussed).}\label{tab:coverage}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{0.20\textwidth}C{0.07\textwidth}C{0.09\textwidth}C{0.09\textwidth}C{0.08\textwidth}C{0.10\textwidth}C{0.09\textwidth}C{0.08\textwidth}@{}}
+\toprule
+Study & DoH/2 & Newer transport & Outside US/EU & Time or era & Padding as deployed & Repro\-duction & Variance \\
+\midrule
+Siby et al. 2020~\cite{siby2020} & \checkmark & -- & \checkmark & \checkmark & partly & -- & \checkmark \\
+Moure-Garrido et al. 2026~\cite{mouregarrido2026} & -- & DoQ & -- & -- & -- & -- & \checkmark \\
+DoHFuse 2026~\cite{zhang2026dohfuse} & -- & DoH/3 & -- & -- & observed & -- & \checkmark \\
+Salari et al. 2025~\cite{salari2025odoh} & -- & ODoH & -- & \checkmark & -- & -- & -- \\
+Li et al. 2025~\cite{li2025unraveling} & \checkmark & -- & -- & -- & surveyed & -- & -- \\
+Shusterman et al. 2026~\cite{shusterman2026} & -- & -- & -- & \checkmark & -- & -- & -- \\
+\textbf{This work} & \checkmark & -- & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+\botrule
+\end{tabular*}
+\end{table}
+
+%% ===================================================================== 3
+\section{Proposed Methodology}\label{sec:method}
+
+\paragraph{Problem formulation.} A passive adversary observes the encrypted connection between a browser and a DoH resolver with a known IP address. For one page visit it records a trace $x=((s_1,t_1),\dots,(s_n,t_n))$. Here $s_i\in\mathbb{Z}\setminus\{0\}$ is the length of the $i$-th TLS record, positive for client-to-resolver and negative for resolver-to-client, and $t_i$ is its capture time. In the closed world the site belongs to $\mathcal{Y}=\{1,\dots,K\}$, and a classifier $f$ maps $x$ to class probabilities, predicting $\hat{y}=\arg\max_k f_k(x)$. Performance is reported as macro-\Fone{}, $\frac{1}{K}\sum_k 2P_kR_k/(P_k+R_k)$, where $P_k$ and $R_k$ are the precision and recall for site $k$; chance is $1/K$.
+
+\paragraph{Architecture.} Figure~\ref{fig:pipeline} shows three tracks feeding one pipeline. Track~A reproduces the 2020 attack (RQ1). Track~B collects PK-DoH-2026 and tests transfer (RQ2). Track~C audits padding (RQ3) and selects the resolvers for Track~B.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_pipeline.png}
+\caption{Architecture of the study. Dashed borders mark components changed from the planned design.}\label{fig:pipeline}
+\end{figure}
+
+\paragraph{Capture and TLS~1.3 alignment.} Each visit follows Algorithm~\ref{alg:extract}. TLS~1.3 creates a mismatch with the 2018 data that, to the authors' knowledge, has not been addressed before. In TLS~1.3~\cite{rfc8446} the certificate chain, the client \emph{Finished} message and the session tickets travel as encrypted records. Left in place, they would add about 2~kB of site-independent records to the start of every 2026 trace. Removing them makes a 2026 trace start at the first DNS exchange, as a 2018 TLS~1.2 trace does.
+
+\begin{algorithm}[t]
+\caption{Per-visit capture and trace extraction}\label{alg:extract}
+\begin{algorithmic}[1]
+\Require site $u$, resolver address $a$, timeout $T=30$\,s, idle time $\delta=5$\,s
+\State fresh browser profile with Secure DNS forced to DoH server $a$; QUIC disabled
+\State capture packets to and from $a$:443; load \texttt{http://}$u$ (abort after $T$); wait $\delta$; stop
+\For{each TLS connection $c$}
+  \State drop encrypted records of $c$ up to and including the client's first one (handshake)
+  \State drop server records of $c$ of at most 300 bytes before the first request (tickets)
+\EndFor
+\State \Return $x=((s_i,t_i))_i$ in time order, with label $u$
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{Features.} A \emph{burst} is a maximal run of records in one direction. If $I_j$ is the set of record indices in the $j$-th burst, its signed size is $b_j=\sum_{i\in I_j}s_i$. Five feature sets are used:
+\begin{itemize}
+\item \textbf{F1} (n-grams~\cite{siby2020}): counts of uni- and bi-grams of $(s_i)$ and $(b_j)$, kept if they occur in at least three training traces.
+\item \textbf{F2} (burst statistics~\cite{mouregarrido2026}): 24 statistics of bursts that are also split at gaps above $\tau=25$\,ms, including counts, bytes, duration, Gini concentration and gravity centre.
+\item \textbf{F3}: the first 200 records as size, log inter-arrival time and direction channels.
+\item \textbf{F4}: F1 computed on block indices $\operatorname{sign}(s_i)\lceil|s_i|/\beta\rceil$ for a padding block size $\beta\in\{128,468\}$ bytes.
+\item \textbf{F5} (after~\cite{gong2026wfcat}): for 20 slots of 250~ms and each direction, an 8-bin histogram of log inter-arrival times, 320 values in total.
+\end{itemize}
+
+\paragraph{M1: fused random forest (proposed).} M1 concatenates the three views, $\phi(x)=[\phi_{\mathrm{F1}}(x);\phi_{\mathrm{F2}}(x);\phi_{\mathrm{F5}}(x)]$, and trains $N_T=100$ fully grown trees. Each split minimises the Gini impurity $1-\sum_k p_k^2$, where $p_k$ is the share of class $k$ in the node, over $\sqrt{d}$ randomly chosen features, where $d$ is the dimension of $\phi(x)$. The forest averages the trees' class distributions, $f(x)=\frac{1}{N_T}\sum_{b=1}^{N_T} f_b(x)$, where $f_b$ is the $b$-th tree. Padding hides sizes but not the number, grouping and pacing of exchanges, so the forest can split on F1 when sizes are informative and fall back on F2 and F5 when they are padded. F5 is kept as specified in the planned design; the ablation (Section~\ref{sec:ablation}) shows that at this sample size it adds nothing beyond F1 and F2, so F1+F2 would be an equally accurate, simpler alternative.
+
+\paragraph{M2: 1D-CNN with squeeze-and-excitation (proposed).} Three convolutional blocks (32, 64 and 128 channels, kernel 5), each followed by a squeeze-and-excitation layer~\cite{hu2018se}, take F3 as input. Training minimises the label-smoothed cross-entropy $\mathcal{L}=-\sum_k q_k\log f_k(x)$, with $q_k=(1-\alpha)\mathbb{1}[k=y]+\alpha/K$ and $\alpha=0.05$, using AdamW~\cite{loshchilov2019adamw}.
+
+\paragraph{Scalability.} With 1,500 classes, a 100-tree forest needs about 100~GB of memory. Algorithm~\ref{alg:forest} (Appendix~\ref{app:extra}) grows the same trees in batches, accumulates their test probabilities and frees them, which gives an identical output in bounded memory.
+
+\paragraph{Reproduction criterion and padding model.} For each configuration, $\Delta=\mathrm{F1}_{\mathrm{rep}}-\mathrm{F1}_{\mathrm{pub}}$, the reproduced minus the published macro-\Fone{}. A result counts as \emph{reproduced} if $|\Delta|\le\varepsilon=0.03$ and as \emph{partly reproduced} if $|\Delta|\le0.10$. This rule was fixed before any code was run; 0.03 is ten times the standard deviation of the main configuration in~\cite{siby2020} ($\pm0.003$). A TOST equivalence test~\cite{schuirmann1987tost} checks $H_1:|\Delta|<\varepsilon$. Padding with block size $\beta$ is simulated as $s_i'=\operatorname{sign}(s_i)\,\beta\lceil|s_i|/\beta\rceil$, and perfect padding sets every record to 825 bytes. The byte overhead is $O=\sum|s_i'|/\sum|s_i|-1$.
+
+\paragraph{Changes from the plan.} The planned methodology received no external feedback. The main changes made during implementation were: a Python~3 port of the released Python~2 code; TLS~1.3 alignment and the streaming forest; 10 instead of 30 traces per site; a resolver contrast in place of the uncollected mobile network; recovery budgets up to $k=5$; and 250-ms timing slots. Table~\ref{tab:deviations} (Appendix~\ref{app:extra}) lists every change.
+
+%% ===================================================================== 4
+\section{Experimental Setup}\label{sec:setup}
+
+\paragraph{Datasets.} Table~\ref{tab:datasets} lists the data. The published sets~\cite{siby2020,sibycode} are LOC1--3 from 2018 and EDNS0-128/468 from 2019. The paper describes the padded sets as 700 pages $\times$ 60 samples, but only 700 of the 1,500 released EDNS0-468 pages have 60 or more samples, so those 700 are evaluated. PK-DoH-2026 has 100 labels. Fifty are global sites from Siby's list, mapped to its class indices so that the two eras share labels. Fifty are Pakistani sites: news (16), e-commerce (11), government (8), banking (6), education (6) and telecom (3). Ten rounds per site and resolver were collected in headless Chrome~157 over residential Wi-Fi in Pakistan in November 2026. Eight parallel workers each used their own resolver address: four anycast addresses each for Cloudflare and Quad9, all verified to pad identically.
+
+\begin{table}[t]
+\caption{Datasets. Len.: median records per trace; CV: median within-site coefficient of variation of length~\cite{jansen2026gtt23}. CF: Cloudflare. \pub{} Released by~\cite{siby2020}; all statistics computed in this work.}\label{tab:datasets}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lllllrrr@{}}
+\toprule
+Dataset & Place & Year & Resolver / client & Padding & Traces & Len. & CV \\
+\midrule
+LOC1\pub & Lausanne & 2018 & CF / cloudflared & none & 415,562 & 59 & 0.24 \\
+LOC2\pub & Leuven & 2018 & CF / cloudflared & none & 311,948 & 54 & 0.05 \\
+LOC3\pub & Singapore & 2018 & CF / cloudflared & none & 154,933 & 77 & 0.03 \\
+EDNS0-128\pub & Lausanne & 2019 & CF & 128-B & 132,922 & 76 & 0.05 \\
+EDNS0-468\pub & Lausanne & 2019 & CF via proxy & 468-B & 83,794 & 68 & 0.15 \\
+PK26 / CF & Pakistan & 2026 & CF / Chrome 157 & 468-B & 998 & 286 & 0.10 \\
+PK26 / Quad9 & Pakistan & 2026 & Quad9 / Chrome 157 & none & 1,000 & 196 & 0.10 \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\paragraph{Preprocessing and splits.} Crashed visits and traces with fewer than five records are discarded. Each condition is balanced per site, and sites below the 10th-percentile trace count are dropped, which leaves 98 Cloudflare sites. Twelve sites that served bot-challenge pages are kept and removed in a curated ablation. Splits are stratified by site, and a trace and all its derived variants stay on one side. E1 (reproduction) uses the paper's 10-fold split and evaluates the first 3 folds. E2 (in-domain) uses 10 repeated 80/20 splits, 5 for CUMUL, DF and M2. E5 (padding) and the ablations use 5 splits. E3 (transfer) trains on one dataset and tests on another over their shared labels, with site-clustered bootstrap confidence intervals (1,000 resamples). E4 (recovery) adds $k$ target traces per site to the source data, with 3 repetitions. Results are reported as mean $\pm$ SD over splits, and paired comparisons use the Wilcoxon signed-rank test~\cite{wilcoxon1945}.
+
+\paragraph{Baselines and implementation.} B1: Siby's n-grams with a random forest~\cite{siby2020}. B2: k-FP~\cite{hayes2016kfp}. B3: CUMUL with an RBF-SVM ($C=1000$)~\cite{panchenko2016cumul}. B4: Deep Fingerprinting~\cite{sirinam2018df}. B5: burst statistics with a 200-tree balanced forest~\cite{mouregarrido2026}. A timing-only forest (F5) is also reported. Every method was re-implemented; values taken from papers are marked \pub. Table~\ref{tab:impl} (Appendix~\ref{app:extra}) lists the hyperparameters, random seeds, hardware (Intel i7-13620H, 16~GB RAM, no GPU) and software (Python~3.14, scikit-learn~1.8~\cite{pedregosa2011sklearn}, PyTorch~2.11~\cite{paszke2019pytorch}, tshark~4.6~\cite{wireshark}).
+
+%% ===================================================================== 5
+\section{Results and Analysis}\label{sec:results}
+
+\paragraph{Padding as deployed.} Table~\ref{tab:audit} shows the audit. Cloudflare and Google follow RFC~8467 but pad DoH replies only when the client pads its query. OpenDNS pads everything. AdGuard and ControlD use non-standard lengths, and Quad9, NextDNS, DNS.SB and AliDNS never pad. Cloudflare has changed since 2019, from 128-byte to 468-byte blocks. Because Chrome pads its own queries (154-byte records), a Chrome user of Cloudflare receives padded replies and a Chrome user of Quad9 does not. This contrast, also visible on the wire (Figures~\ref{fig:audit} and~\ref{fig:wire}), defines the two experimental conditions.
+
+\begin{table}[t]
+\caption{Padding of decrypted responses, November 2026. ``+ pad'': the client pads its query to 128 bytes. ``non-std'': a Padding option is present but replies do not fall on block boundaries.}\label{tab:audit}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lllll@{}}
+\toprule
+Resolver & DoH & DoH + pad & DoT & DoT + pad \\
+\midrule
+Cloudflare & none & 468-B & 468-B & 468-B \\
+Google & none & 468-B & none & 468-B \\
+OpenDNS & 468-B & 468-B & 468-B & 468-B \\
+AdGuard, ControlD & none & non-std & none & non-std \\
+CleanBrowsing & none & none & none & non-std \\
+Quad9 & none & none & unreachable & unreachable \\
+NextDNS, DNS.SB, AliDNS & none & none & none & none \\
+Mullvad & unreachable & unreachable & unreachable & unreachable \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\paragraph{In-domain attack in 2026.} Table~\ref{tab:e2} and Figure~\ref{fig:e2} report every method. Against Quad9 the 2020 attack still works, with macro-\Fone{} $0.948$ and top-5 accuracy 0.979. Against Cloudflare it falls to $0.342$. The two conditions share sites, network, browser and week, so the drop of 0.606 (64\%) is the effect of deployed padding. Methods that depend less on exact sizes degrade less. On Cloudflare, k-FP (0.463), B5 (0.443) and M1 (0.444) all exceed B1, and M1 gains $+0.102$ over B1 (Wilcoxon $p=0.002$). On Quad9, M1 loses $0.025$ to B1. Timing alone reaches about 0.24, roughly 24 times chance, on both resolvers. The neural models remain weak with eight training traces per site. The per-site picture (Figure~\ref{fig:cdf}) is uneven. On Cloudflare, 42 of 98 sites are never identified, including facebook.com and wikipedia.org, while 12 sites reach $\ge0.8$. On Quad9, 90 of 100 sites reach $\ge0.8$.
+
+\begin{table}[t]
+\caption{In-domain results on PK-DoH-2026 (mean $\pm$ SD over splits). Best per column in bold; chance 0.010.}\label{tab:e2}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Cloudflare (pads, 98 sites)} & \multicolumn{3}{c}{Quad9 (no padding, 100 sites)} \\
+\cmidrule{2-4}\cmidrule{5-7}
+Method & Macro-\Fone{} & Acc. & Top-5 & Macro-\Fone{} & Acc. & Top-5 \\
+\midrule
+B1 n-grams + RF~\cite{siby2020} & $0.342\pm0.024$ & 0.379 & 0.697 & $\mathbf{0.948\pm0.017}$ & \textbf{0.952} & \textbf{0.979} \\
+B2 k-FP~\cite{hayes2016kfp} & $\mathbf{0.463\pm0.033}$ & \textbf{0.494} & 0.767 & $0.643\pm0.038$ & 0.665 & 0.877 \\
+B3 CUMUL~\cite{panchenko2016cumul} & $0.174\pm0.016$ & 0.223 & 0.543 & $0.426\pm0.035$ & 0.462 & 0.696 \\
+B4 DF~\cite{sirinam2018df} & $0.051\pm0.022$ & 0.087 & 0.299 & $0.142\pm0.008$ & 0.192 & 0.496 \\
+B5 Burst-stats RF~\cite{mouregarrido2026} & $0.443\pm0.034$ & 0.476 & \textbf{0.782} & $0.596\pm0.023$ & 0.627 & 0.864 \\
+Timing only (F5) & $0.239\pm0.018$ & 0.261 & 0.530 & $0.235\pm0.032$ & 0.262 & 0.510 \\
+M2 1D-CNN + SE (proposed) & $0.139\pm0.043$ & 0.190 & 0.530 & $0.331\pm0.046$ & 0.385 & 0.751 \\
+M1 Fused RF (proposed) & $0.444\pm0.026$ & 0.479 & 0.770 & $0.923\pm0.022$ & 0.929 & 0.972 \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\paragraph{What padding removes and what survives.} Figure~\ref{fig:padding} separates padding from other differences between the resolvers. Rounding Quad9 traces to 128-byte blocks cuts B1 from 0.959 to 0.646, at 61\% byte overhead. 468-byte blocks cut it to 0.407 (263\%), and perfect padding to 0.381 (539\%). Deployed padding on Cloudflare leaves 0.331, slightly below the simulated value. Padding leaves two signals intact: timing (0.252 on Quad9 and 0.236 on Cloudflare) and the count and grouping of exchanges (burst statistics, 0.452 on Cloudflare). M1 combines them and degrades much less than B1, scoring 0.525 against 0.407 with 468-byte blocks and 0.521 against 0.381 under perfect padding. Even perfect size padding at more than five times the bytes leaves over half of the unpadded \Fone{}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig8_padding_effect.png}
+\caption{Left: macro-\Fone{} by feature family on the padded and unpadded resolver. Right: padding simulated on Quad9 traces against byte overhead (dashed: timing only).}\label{fig:padding}
+\end{figure}
+
+\paragraph{Transfer and recovery (RQ2).} Figure~\ref{fig:transfer} is the transfer matrix of B1 over the 49 shared global sites; vimeo.com had too few valid Cloudflare traces. Within 2018 the attack transfers between places (Lausanne $\to$ Singapore 0.879; reverse 0.730), as Siby et al. found. Across eras every cell is at most 0.004, against a chance level of 0.020. This holds even between the two unpadded datasets, for burst statistics (at most 0.010), and for block-index features (at most 0.041), which absorb small size offsets. Transfer also fails between the two 2026 resolvers (0.033, 0.021) and between Lausanne 2018 and 2019 (0.005). The representation, not the site, has changed (cloudflared over TLS~1.2 in 2018; Chrome over TLS~1.3 with padded queries in 2026). A few fresh traces restore the attack (Figure~\ref{fig:recovery}). Adding $k=1,2,5$ Cloudflare traces per site to the 2018 model gives 0.082, 0.171 and 0.336, while the target traces alone give 0.076, 0.224 and 0.358. The old data therefore adds nothing. Between the two 2026 resolvers the source data helps only at $k=1$, where Cloudflare $\to$ Quad9 reaches 0.397 against 0.299.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/fig6_transfer_matrix.png}
+\caption{Transfer matrix for B1 (rows train, columns test) with site-clustered 95\% confidence intervals. PK26: PK-DoH-2026; S18/S19: Siby's data.}\label{fig:transfer}
+\end{figure}
+
+%% ===================================================================== 6
+\section{Comparison with Base Papers and the State of the Art}\label{sec:comparison}
+
+\paragraph{Summary.} Table~\ref{tab:base} summarises the base papers. Siby et al.~\cite{siby2020} is the reproduction target and B1. Moure-Garrido et al.~\cite{mouregarrido2026} supplies B5 and F2. DoHFuse~\cite{zhang2026dohfuse} motivates the timing features, and Shusterman et al.~\cite{shusterman2026} motivates the recovery design.
+
+\begin{table}[t]
+\caption{Base papers (results as reported by the authors).}\label{tab:base}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{0.12\textwidth}L{0.11\textwidth}L{0.14\textwidth}L{0.14\textwidth}L{0.08\textwidth}L{0.15\textwidth}L{0.15\textwidth}@{}}
+\toprule
+Paper & Problem & Method & Dataset & Metrics & Reported result & Key limitation \\
+\midrule
+Siby et al. 2020~\cite{siby2020} & WF on DoH & Size and burst n-grams, RF & 1,500 pages, 3 locations, 2018--19 & P, R, \Fone{} & \Fone{} 0.898; 0.430 at 468-B padding & Artefact differs from paper; never re-measured \\
+Moure-Garrido et al. 2026~\cite{mouregarrido2026} & WF on DoQ & Burst statistics, RF & 986 sites, 9 nodes, one country & Acc., \Fone{} & Acc. 0.873; cross-node 53--81\% & One country; padding argued, not measured \\
+DoHFuse 2026~\cite{zhang2026dohfuse} & WF on DoH/3 & Timing-only DMAG-LSTM & 449 sites $\times$ 100, US VPS & Acc., \Fone{} & 95.48\% (100 sites); size-only 67.39\% & One region; padding not audited \\
+Shusterman et al. 2026~\cite{shusterman2026} & Drift & CNN+LSTM, retraining regimes & 100 sites, 26 weeks & Acc. & $>$95\% same week; $\approx$60\% after 26 weeks & One lab and browser; no variance \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\paragraph{Quantitative comparison.} Table~\ref{tab:repro} compares the re-implementation with Siby et al. on their own data; Figure~\ref{fig:repro} plots it. The main configuration reproduces: 0.893 against 0.898, with TOST $p<0.001$. So do LOC2, LOC3, EDNS0-128 and perfect padding. Two discrepancies between the artefact and the paper matter. First, the released code uses uni-grams only, while the paper describes uni- and bi-grams; both reproduce. Second, perfect padding reproduces only when record direction is dropped too (0.043 against 0.066; 0.253 if direction is kept). This indicates that the paper set every packet, regardless of direction, to 825 bytes. EDNS0-468 comes out above the paper ($+0.078$), and the released files do not identify which 700 pages were used. On an identical 100-page LOC1 setting (Table~\ref{tab:samedata}, Appendix~\ref{app:extra}), n-grams lead (0.961) and DF is last (0.593), as in the paper, but k-FP (0.913) clearly beats CUMUL (0.797), which Siby et al. found nearly equal.
+
+\begin{table}[t]
+\caption{Reproduction of~\cite{siby2020} on the released data (re-implemented in this work). \pub{} Published value. [pages $\times$ samples per page]. Verdict: \emph{yes} if $|\Delta|\le0.03$, \emph{partly} if $\le0.10$, otherwise \emph{no}.}\label{tab:repro}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccccc@{}}
+\toprule
+Configuration & Published\pub{} & This work & $\Delta$ & TOST $p$ & Reproduced \\
+\midrule
+LOC1 [1,500$\times$60] & 0.898 & $0.893\pm0.001$ & $-0.005$ & $<0.001$ & yes \\
+LOC1, all n-grams [1 fold] & 0.898 & 0.894 & $-0.004$ & -- & yes \\
+LOC1, uni-grams only [1 fold] & 0.898 & 0.895 & $-0.003$ & -- & yes \\
+LOC2 Leuven [1,500$\times$20] & 0.908 & $0.882\pm0.006$ & $-0.026$ & 0.169 & yes \\
+LOC3 Singapore [1,500$\times$20] & 0.917 & $0.906\pm0.001$ & $-0.011$ & $<0.001$ & yes \\
+EDNS0-128 [700$\times$60] & 0.691 & $0.703\pm0.005$ & $+0.012$ & 0.013 & yes \\
+EDNS0-468 [700$\times$60] & 0.430 & $0.508\pm0.007$ & $+0.078$ & 0.997 & partly \\
+Perfect, no direction [700$\times$60] & 0.066 & $0.043\pm0.002$ & $-0.023$ & 0.011 & yes \\
+Perfect, with direction [700$\times$60] & 0.066 & $0.253\pm0.009$ & $+0.187$ & 0.999 & no \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\paragraph{Methodological comparison and improvement.} B1 relies entirely on exact sizes, so it is the best method when sizes are intact and among the weakest when they are padded. B5 and DoHFuse discard sizes, which makes them robust to padding but weaker on unpadded traffic (B5 scores 0.596 on Quad9). M1 keeps all three views and lets the forest choose between them. Table~\ref{tab:improve} shows the result. M1 is never more than 0.025 below the best method, but it is not the best everywhere: k-FP leads by 0.019 on Cloudflare (overlapping confidence intervals), and B1 leads by 0.025 on Quad9. Ablation A1 traces M1's gain over B1 to the burst statistics.
+
+\begin{table}[t]
+\caption{M1 against each re-implemented base method: absolute macro-\Fone{} change (relative change in brackets). Positive values favour M1.}\label{tab:improve}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccc@{}}
+\toprule
+Condition & vs.\ B1 Siby~\cite{siby2020} & vs.\ B5 bursts~\cite{mouregarrido2026} & vs.\ B2 k-FP~\cite{hayes2016kfp} \\
+\midrule
+Cloudflare (deployed padding) & $+0.102$ ($+29.8\%$) & $+0.001$ ($+0.2\%$) & $-0.019$ ($-4.1\%$) \\
+Quad9 (no padding) & $-0.025$ ($-2.6\%$) & $+0.327$ ($+54.9\%$) & $+0.280$ ($+43.5\%$) \\
+Simulated 468-B padding & $+0.118$ ($+29.0\%$) & -- & -- \\
+Simulated perfect padding & $+0.140$ ($+36.7\%$) & -- & -- \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\paragraph{Fairness.} The reproduction uses the authors' data, but only 3 of 10 folds are evaluated, LOC2 and LOC3 use 20 of 60 samples per page (if anything, lowering \Fone{}), and LOC1 prunes rare n-grams; the unpruned check gives 0.894. For LOC2 the equivalence test is not significant, so that reproduction is less certain. Comparisons with DoHFuse and Moure-Garrido et al. are indicative only, because they use other transports and regions and, for DoHFuse, ten times as many traces per site.
+
+%% ===================================================================== 7
+\section{Ablation Study}\label{sec:ablation}
+
+\begin{table}[t]
+\caption{Ablation A1: feature groups (macro-\Fone{}, 5 splits).}\label{tab:a1}
+\scriptsize\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcc|lcc@{}}
+\toprule
+Features & Cloudflare & Quad9 & Features & Cloudflare & Quad9 \\
+\midrule
+Size uni-grams & 0.303 & \textbf{0.978} & F1 + F2 (bursts) & 0.444 & 0.932 \\
+Size uni+bi-grams & 0.374 & 0.969 & F1 + F5 (timing) & 0.357 & 0.951 \\
+Burst uni+bi-grams & 0.137 & 0.459 & F1 + F2 + F5 (M1) & 0.437 & 0.933 \\
+F1 (B1) & 0.331 & 0.959 & F2 + F5 (no sizes) & \textbf{0.470} & 0.575 \\
+F1 + tri-grams & 0.341 & 0.934 & & & \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\paragraph{A1: feature groups.} Table~\ref{tab:a1} and Figure~\ref{fig:a1} remove and add feature families. On Quad9, size n-grams carry the attack, and tri-grams add nothing. On Cloudflare the picture reverses. Adding burst statistics to the n-grams raises \Fone{} from 0.331 to 0.444, timing raises it only to 0.357, and adding timing on top of the bursts adds nothing (0.437). Dropping the size n-grams altogether even helps slightly (0.470). Under padding, a page is identified by how many exchanges it makes and how they are grouped, not by fine-grained timing.
+
+\paragraph{A2--A4: prefix, budget and world size.} Figure~\ref{fig:a234} varies the input and the data. On Quad9 the first 50 records give 0.057 but the first 100 give 0.958, because the opening records are browser start-up lookups common to all sites. The attack is still data-limited: on Quad9, 1, 2 and 5 traces per site give 0.328, 0.693 and 0.917. Accuracy falls as the closed world grows (Cloudflare: 0.743 with 10 sites and 0.367 with 98), which also explains why evaluating EDNS0-468 over all 1,500 labels lowered it to 0.330 (Table~\ref{tab:sens}).
+
+\paragraph{A5--A7: label set, curation and CNN components.} Pakistani and global sites are identified equally well (Quad9: 0.953 and 0.959; Cloudflare: 0.430 and 0.427). Removing the bot-challenge sites leaves Quad9 unchanged and raises Cloudflare from 0.331 to 0.390, so the padded results reported here are conservative. In M2, removing the squeeze-and-excitation block helps (Quad9: 0.354 to 0.379; 2018 data: 0.680 to 0.788), while removing the timing channel hurts (0.354 to 0.269). Channel attention does not help on short DNS traces at this sample size.
+
+%% ===================================================================== 8
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{Why it works and what it means.} Each page triggers its own set of lookups, and their number, order and sizes vary little between visits. Padding removes the sizes but not the number or grouping of the lookups, which is why burst features and M1 survive it. This refines the prediction that timing survives size-only defences~\cite{gong2026wfcat,bushart2020}: on DNS traces, what survives is coarse burst structure rather than fine timing. For users, protection depends on an invisible combination of client and resolver: the same Chrome user is padded on Cloudflare or Google but not on Quad9, NextDNS, DNS.SB or AliDNS. Resolvers could remove that dependence by padding unconditionally, as OpenDNS does. For researchers, models are as short-lived as client software and must be retrained, not reused.
+
+\paragraph{Strengths.} Every 2026 comparison changes one factor: the two conditions share sites, network, browser, week and collection script, and differ only in the resolver, and with it in whether replies are padded. Padding is measured from decrypted probe replies rather than assumed, and the same contrast is visible on the wire. The reproduction is anchored to the authors' own data and judged against a tolerance fixed before any code was run, and every in-domain result carries its spread over repeated splits.
+
+\paragraph{Failure cases.} Under deployed padding, 42 of 98 sites are never identified, including facebook.com and wikipedia.org (Figure~\ref{fig:cdf}). M1 does not beat the strongest single baseline on padded traffic (k-FP, 0.463 against 0.444) and trails the original attack on unpadded traffic by 0.025. The neural model M2 is weak at this sample size, and its channel-attention block lowers rather than raises accuracy. In the reproduction, EDNS0-468 is only partly reproduced (+0.078), and perfect padding matches the paper only under a corrected reading of the setup.
+
+\paragraph{Research gaps.} Of the four gaps identified in the literature review, three are closed (Table~\ref{tab:gaps}, Appendix~\ref{app:extra}): the 2020 attack has been re-measured, deployed padding has been tied to attack accuracy, and the main results carry stated uncertainty under a pre-registered criterion. The location gap is only partly closed: the change of client, TLS and padding between eras hides any location effect, so regional CDN steering was neither confirmed nor ruled out.
+
+\paragraph{Limitations and threats to validity.} With only 10 traces per site and 100 sites, absolute values are lower bounds (A3), and the neural models are under-trained. All 2026 data come from one Wi-Fi network and Chrome~157. Headless crawls are more regular than real browsing~\cite{jansen2026gtt23,deng2026}, and an open world would lower all numbers. Only 3 of 10 reproduction folds were evaluated. Parallel workers may add timing noise, but they cannot mix traces, because each capture is filtered to one resolver address. McNemar tests, multiple-comparison correction and a confusion-cluster analysis were planned but not done.
+
+%% ===================================================================== 9
+\section{Conclusion and Future Work}\label{sec:conclusion}
+
+The 2020 attack on encrypted DNS reproduces within a pre-registered tolerance, and in 2026 it remains effective against an unpadded resolver, with macro-\Fone{} 0.948. Padding as deployed reduces it to 0.342, but only where client and resolver both pad, and a fused model of sizes, bursts and timing recovers part of the loss (0.444). Models from 2018--19 do not transfer to 2026, but a few fresh traces per site rebuild the attack. Future work should add traces per site, a mobile network and a second country to isolate the effect of location, track padding over time and across browsers, and evaluate defences that also shape the number and timing of exchanges.
+
+\backmatter
+
+\bmhead{Acknowledgements}
+The authors thank Siby et al. for releasing their code and data~\cite{sibycode}.
+
+\section*{Declarations}
+\begin{itemize}
+\item \textbf{Funding:} none. \textbf{Conflict of interest:} the authors declare none.
+\item \textbf{Ethics:} not applicable. All traffic was generated by the authors' own crawler to public resolvers; no third-party or user traffic was captured.
+\item \textbf{Data and code availability:} PK-DoH-2026 (traces and metadata) and all code, with a README giving the order in which to run the scripts to regenerate every table and figure, are provided as a supplementary archive and will be released publicly on publication. Siby et al.'s data are available at~\cite{sibycode}.
+\item \textbf{Use of AI tools:} The authors used Claude (Anthropic) to help write and debug analysis code and to draft and edit the manuscript. All experiments ran on the authors' machine with the authors' code, every number was checked against the result files, and the authors take full responsibility for the content.
+\item \textbf{Author contributions:} M.K.: capture pipeline, resolver setup, padding audit. S.A.: features, models, evaluation. Both: reproduction, analysis and writing.
+\end{itemize}
+
+%% Appendix floats are in the order in which the main text first cites them.
+\begin{appendices}
+
+\section{Supplementary material}\label{app:extra}
+
+\begin{algorithm}[h]
+\caption{Streaming random forest (identical output, bounded memory)}\label{alg:forest}
+\begin{algorithmic}[1]
+\Require training set $(X,y)$, test set $X'$, number of trees $N_T$, batch size $m$, seed $r$
+\State $S\gets\mathbf{0}_{|X'|\times K}$
+\For{$j=0,m,\dots,N_T-m$}
+  \State grow trees $j,\dots,j+m-1$ on bootstrap samples of $(X,y)$ (seeds $r+j,\dots$)
+  \State $S\gets S+\sum$ of their predicted probabilities on $X'$; free the trees
+\EndFor
+\State \Return $S/N_T$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{table}[h]
+\caption{Changes from the planned methodology.}\label{tab:deviations}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{0.22\textwidth}L{0.22\textwidth}L{0.48\textwidth}@{}}
+\toprule
+Item & Plan & What was done and why \\
+\midrule
+DoT, GOOGLE/CLOUD sets & Reproduce & Not released; DoT covered by the audit only \\
+Released code & Run unchanged & Python 2 and uni-grams only; ported, both feature sets reported \\
+Forest memory & Standard RF & About 100\,GB needed; streaming forest (Algorithm~\ref{alg:forest}) \\
+n-gram vocabulary, folds & All n-grams, 10 folds & Pruned (check row unpruned); first 3 folds, for compute \\
+Countermeasure sets & As released & Paper's 700 $\times$ 60 configuration; 1,500-label runs in Table~\ref{tab:sens} \\
+Traces per site; network & 30; Wi-Fi and 4G & 10 per site; 4G not collected, replaced by the resolver contrast \\
+TLS 1.3 records & Not anticipated & Handshake and tickets removed (Algorithm~\ref{alg:extract}) \\
+Recovery budget; F5 slots & $k\le20$; 10--20\,ms & $k\le5$ (half of 10 traces held out); 250\,ms, as traces last about 10\,s \\
+Statistics, error analysis & McNemar, Holm, Cliff's delta, confusion clusters & Not done; Wilcoxon, bootstrap, TOST and per-site \Fone{} instead \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[h]
+\caption{Implementation details and hyperparameters.}\label{tab:impl}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{0.20\textwidth}L{0.74\textwidth}@{}}
+\toprule
+Item & Setting \\
+\midrule
+Random forests & $N_T=100$ fully grown trees, $\sqrt{d}$ features per split, bootstrap, probability averaging; B5: 200 trees, balanced weights; n-grams kept if in $\ge3$ training traces \\
+SVM (B3) & RBF kernel, $C=1000$ \\
+Neural (B4, M2) & AdamW, learning rate $2\times10^{-3}$ ($10^{-3}$ for DF), cosine schedule, batch 128, label smoothing 0.05, $\le$40 epochs, early stopping on 10\% of training data, shift augmentation $\pm3$ \\
+Features & $\tau=25$\,ms (F2); 200 records (F3); $\beta\in\{128,468\}$ (F4); 20 slots $\times$ 250\,ms, 8 bins (F5) \\
+Random seeds & Splits: stratified, \texttt{random\_state}=0 (E1 10-fold; E2--E5 repeated 80/20); model seed = fold or split index $0,1,2,\dots$; site-clustered bootstrap seed 0 \\
+Capture & Chrome 157 headless, Selenium 4.52, ChromeDriver 157, dumpcap/tshark 4.6.8; 30\,s timeout, 5\,s idle; QUIC off \\
+Environment & Intel i7-13620H (10 cores), 16\,GB RAM, no GPU, Windows 11; Python 3.14, scikit-learn 1.8, PyTorch 2.11 (CPU), NumPy 2.4, pandas 3.0, SciPy 1.17 \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[h]
+\caption{All methods on an identical setting: 100 LOC1 pages $\times$ 60 traces, 3 splits (2 for neural models). \pub{} Siby et al. at 1,500 pages, for reference.}\label{tab:samedata}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lcccc@{}}
+\toprule
+Method & Macro-\Fone{} (this work) & Acc. & Top-5 & Published\pub{} \\
+\midrule
+B1 n-grams + RF & $0.961\pm0.008$ & 0.961 & 0.987 & 0.87 \\
+B2 k-FP & $0.913\pm0.006$ & 0.913 & 0.957 & 0.74 \\
+B3 CUMUL & $0.797\pm0.003$ & 0.801 & 0.927 & 0.75 \\
+B4 DF & $0.593\pm0.008$ & 0.611 & 0.911 & 0.51 \\
+B5 Burst-stats RF & $0.904\pm0.009$ & 0.905 & 0.958 & -- \\
+M1 Fused RF (proposed) & $0.959\pm0.005$ & 0.959 & 0.986 & -- \\
+M2 1D-CNN + SE (proposed) & $0.680\pm0.045$ & 0.693 & 0.917 & -- \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[h]
+\caption{Sensitivity runs over all 1,500 released page labels (not part of the verdicts).}\label{tab:sens}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccc@{}}
+\toprule
+Configuration & Published\pub{} & This work & $\Delta$ \\
+\midrule
+EDNS0-128 [1,500 $\times$ 20] & 0.691 & $0.584\pm0.006$ & $-0.107$ \\
+EDNS0-468 [1,500 $\times$ 10] & 0.430 & $0.330\pm0.006$ & $-0.100$ \\
+Perfect, direction kept [1,500 $\times$ 60] & 0.066 & $0.200\pm0.003$ & $+0.134$ \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{table}[h]
+\caption{Research gaps and whether this work closes them.}\label{tab:gaps}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}L{0.34\textwidth}L{0.48\textwidth}L{0.10\textwidth}@{}}
+\toprule
+Gap & Evidence & Status \\
+\midrule
+2020 DoH attack never re-measured & Reproduction within tolerance; 2026 re-measurement (Tables~\ref{tab:repro}, \ref{tab:e2}) & closed \\
+Transfer untested outside one country & First South Asian dataset and cross-era matrix; location effect hidden by client change & partly \\
+Padding never tied to deployed accuracy & 11-resolver audit, single-factor contrast, simulation (Table~\ref{tab:audit}, Figure~\ref{fig:padding}) & closed \\
+Thin statistics, no reproduction criterion & Pre-registered tolerance, TOST, repeated splits, clustered bootstrap & closed \\
+\botrule
+\end{tabular*}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig3_padding_audit.png}
+\caption{Decrypted DoH response sizes per resolver, without (left) and with (right) a padded client query; padded replies sit on multiples of 468 bytes.}\label{fig:audit}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4_wire_histograms.png}
+\caption{Qualitative example: resolver-to-client record sizes on the wire. Cloudflare collapses onto a few sizes (494 bytes is one padded 468-byte message plus framing); Quad9 spreads over hundreds.}\label{fig:wire}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig5_baselines.png}
+\caption{In-domain macro-\Fone{} with 95\% confidence intervals for every method (Table~\ref{tab:e2}).}\label{fig:e2}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/fig11_per_site_cdf.png}
+\caption{Distribution of per-site \Fone{} for B1: under padding many sites are never identified, a minority remain easy to identify.}\label{fig:cdf}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig7_recovery.png}
+\caption{Recovery: macro-\Fone{} on held-out target traces with $k$ target traces per site added to the source data (solid) or alone (dotted).}\label{fig:recovery}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_reproduction.png}
+\caption{Published (grey) against reproduced (blue, 95\% confidence interval) macro-\Fone{} for Table~\ref{tab:repro}.}\label{fig:repro}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig9_ablation_features.png}
+\caption{Ablation A1: feature groups (Table~\ref{tab:a1}).}\label{fig:a1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig10_ablation_curves.png}
+\caption{Ablations A2 (first $N$ records), A3 (training traces per site) and A4 (number of sites).}\label{fig:a234}
+\end{figure}
+
+\clearpage
+\end{appendices}
+
+\bibliography{references}
+
+\end{document}
