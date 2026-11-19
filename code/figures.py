@@ -93,7 +93,7 @@ def fig_wire_hist():
         top = xs[np.argsort(-ys)][:3]
         ax.text(0.98, 0.95, "most common: " + ", ".join(map(str, top)), transform=ax.transAxes, ha="right", va="top", fontsize=7)
     axes[0].set_ylabel("Share of records (log)")
-    fig.suptitle("Passive view: resolver-to-client record sizes in our captures", fontsize=9)
+    fig.suptitle("Passive view: resolver-to-client record sizes in the PK-DoH-2026 captures", fontsize=9, y=1.03)
     save(fig, "fig4_wire_histograms.png")
 
 
